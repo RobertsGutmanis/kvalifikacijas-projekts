@@ -1,4 +1,4 @@
-<div class="mx-auto bg-primary min-w-full navbar">
+<div class="mx-auto bg-secondary min-w-full navbar z-[100000]" >
   <div class="mx-auto container flex items-center justify-between px-4 lg:px-0 w-[100%]">
     <div class="">
       <a class="cursor-pointer text-4xl text-white font-bold">Veikals</a>
@@ -31,7 +31,7 @@
             </div>
           </div>
         </div>
-        <i class='bx bx-menu lg:hidden text-3xl cursor-pointer btn btn-ghost flex text-center'></i>
+        <i class='bx bx-menu lg:hidden text-3xl cursor-pointer btn btn-ghost flex text-center' (click)="toggleSidebar()"></i>
         <div class="dropdown dropdown-end lg:inline-block hidden">
           <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
@@ -52,3 +52,30 @@
     </div>
   </div>
 </div>
+<div class="sidebar fixed right-0 top-0 bottom-0 w-[100%] sm:w-[50%] bg-gray-200 z-[10000] flex flex-col p-6 gap-4 lg:hidden" [ngClass]="{'showSidebar': showSidebar, 'hideSidebar': !showSidebar}">
+  <div class="sidebar-top flex justify-between items-center">
+    <h1 class="font-bold text-xl">Hello, User!</h1>
+    <div class="">
+      <i class='bx bxs-user-circle lg:hidden text-3xl cursor-pointer btn btn-ghost text-right'></i>
+      <i class='bx bx-menu lg:hidden text-3xl cursor-pointer btn btn-ghost text-right' (click)="toggleSidebar()"></i>
+    </div>
+  </div>
+  <div class="sidebar-categories">
+    <ul class="flex flex-col gap-4 text-2xl px-2 mb-4">
+      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-git-branch' ></i></span> Processors</li>
+      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-fullscreen' ></i></span> Graphics Cards</li>
+      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bxs-memory-card' ></i></span> Memory</li>
+      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-save' ></i></span> HDD</li>
+      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bxs-save' ></i></span> SSD</li>
+      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-card' ></i></span> Monitors</li>
+      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bxs-keyboard'></i></span> Keyboards</li>
+      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bxs-mouse' ></i></span> Mouses</li>
+      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-checkbox-square' ></i></span> Cases</li>
+      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-power-off' ></i></span> Power Supplies</li>
+      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-headphone' ></i></span> Headphones</li>
+      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-customize' ></i></span> Accessories</li>
+
+    </ul>
+  </div>
+  </div>
+
