@@ -3,11 +3,12 @@ module.exports = {
   mode: 'jit',
   content: [
     "./src/**/*.{html,ts}",
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require('flowbite/plugin')],
   daisyui: {
     themes: ["emerald"],
   },

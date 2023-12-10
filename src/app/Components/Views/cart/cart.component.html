@@ -1,110 +1,195 @@
-<div class="container mx-auto my-10 px-2 flex flex-col gap-4">
-  <div class="cart-top text-3xl font-bold">
-    Your Cart:
-  </div>
-  <div class="cart">
-    <ul class="flex flex-col gap-4 w-full">
-      <li class="flex items-center border-2 border-gray-400 px-2 py-3 justify-between flex-wrap gap-2">
-        <img src="https://www.dateks.lv/images/pic/2400/2400/218/1117.jpg" alt="Intel I5" class="max-h-36 sm:max-h-28 ">
-        <div class=" float-left sm:flex sm:items-center sm:justify-around md:w-[60%] sm:w-[50%] w-[60%] gap-3">
-          <h1 class="font-bold shrink-0 text-4xl sm:text-2xl">Intel I5</h1>
-          <p class="text-red-700 text-4xl sm:text-2xl">$99.99</p>
-          <div class="flex items-center">
-            <p class="font-bold mr-1">Count: </p>
-            <select class="select select-secondary w-24">
-              <option disabled selected>Count</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </select>
-          </div>
-        </div>
-        <button class="btn btn-error w-full sm:w-[15%] block">Remove</button>
+<div class="container mx-auto my-10 px-2 flex flex-col gap-4 min-h-[70vh]">
+  <div class="cart flex flex-wrap-reverse items-end">
+    <ol class="relative text-gray-500 border-s border-gray-200 dark:border-gray-700 dark:text-gray-400 w-[100%] lg:w-[15%] hidden lg:block ml-8 pt-4">
+      <li class="mb-10 ms-6">
+        <span class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -start-4 ring-4 ring-white dark:ring-gray-900 dark:bg-green-900">
+            <svg class="w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+            </svg>
+        </span>
+        <h3 class="font-medium leading-tight">Cart</h3>
+        <p class="text-sm">Review Your Cart</p>
       </li>
-      <li class="flex items-center border-2 border-gray-400 px-2 py-3 justify-between flex-wrap gap-2">
-        <img src="https://www.dateks.lv/images/pic/2400/2400/218/1117.jpg" alt="Intel I5" class="max-h-36 sm:max-h-28 ">
-        <div class=" float-left sm:flex sm:items-center sm:justify-around md:w-[60%] sm:w-[50%] w-[60%] gap-3">
-          <h1 class="font-bold shrink-0 text-4xl sm:text-2xl">Intel I5</h1>
-          <p class="text-red-700 text-4xl sm:text-2xl">$99.99</p>
-          <div class="flex items-center">
-            <p class="font-bold mr-1">Count: </p>
-            <select class="select select-secondary w-24">
-              <option disabled selected>Count</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </select>
-          </div>
-        </div>
-        <button class="btn btn-error w-full sm:w-[15%] block">Remove</button>
+      <li class="mb-10 ms-6">
+        <span class="absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -start-4 ring-4 ring-white dark:ring-gray-900 dark:bg-gray-700">
+            <svg class="w-3.5 h-3.5 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
+                <path d="M18 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM6.5 3a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.014 13.021l.157-.625A3.427 3.427 0 0 1 6.5 9.571a3.426 3.426 0 0 1 3.322 2.805l.159.622-6.967.023ZM16 12h-3a1 1 0 0 1 0-2h3a1 1 0 0 1 0 2Zm0-3h-3a1 1 0 1 1 0-2h3a1 1 0 1 1 0 2Zm0-3h-3a1 1 0 1 1 0-2h3a1 1 0 1 1 0 2Z"/>
+            </svg>
+        </span>
+        <h3 class="font-medium leading-tight">Shipping Info</h3>
+        <p class="text-sm">Fill Out Shipping Form</p>
       </li>
-      <li class="flex items-center border-2 border-gray-400 px-2 py-3 justify-between flex-wrap gap-2">
-        <img src="https://www.dateks.lv/images/pic/2400/2400/218/1117.jpg" alt="Intel I5" class="max-h-36 sm:max-h-28 ">
-        <div class=" float-left sm:flex sm:items-center sm:justify-around md:w-[60%] sm:w-[50%] w-[60%] gap-3">
-          <h1 class="font-bold shrink-0 text-4xl sm:text-2xl">Intel I5</h1>
-          <p class="text-red-700 text-4xl sm:text-2xl">$99.99</p>
-          <div class="flex items-center">
-            <p class="font-bold mr-1">Count: </p>
-            <select class="select select-secondary w-24">
-              <option disabled selected>Count</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </select>
-          </div>
-        </div>
-        <button class="btn btn-error w-full sm:w-[15%] block">Remove</button>
+      <li class="mb-10 ms-6">
+        <span class="absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -start-4 ring-4 ring-white dark:ring-gray-900 dark:bg-gray-700">
+            <svg class="w-3.5 h-3.5 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
+            </svg>
+        </span>
+        <h3 class="font-medium leading-tight">Payment</h3>
+        <p class="text-sm">Pay for the goods</p>
       </li>
-      <li class="flex items-center border-2 border-gray-400 px-2 py-3 justify-between flex-wrap gap-2">
-        <img src="https://www.dateks.lv/images/pic/2400/2400/218/1117.jpg" alt="Intel I5" class="max-h-36 sm:max-h-28 ">
-        <div class=" float-left sm:flex sm:items-center sm:justify-around md:w-[60%] sm:w-[50%] w-[60%] gap-3">
-          <h1 class="font-bold shrink-0 text-4xl sm:text-2xl">Intel I5</h1>
-          <p class="text-red-700 text-4xl sm:text-2xl">$99.99</p>
-          <div class="flex items-center">
-            <p class="font-bold mr-1">Count: </p>
-            <select class="select select-secondary w-24">
-              <option disabled selected>Count</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </select>
-          </div>
-        </div>
-        <button class="btn btn-error w-full sm:w-[15%] block">Remove</button>
+      <li class="ms-6">
+        <span class="absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -start-4 ring-4 ring-white dark:ring-gray-900 dark:bg-gray-700">
+            <svg class="w-3.5 h-3.5 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2ZM7 2h4v3H7V2Zm5.7 8.289-3.975 3.857a1 1 0 0 1-1.393 0L5.3 12.182a1.002 1.002 0 1 1 1.4-1.436l1.328 1.289 3.28-3.181a1 1 0 1 1 1.392 1.435Z"/>
+            </svg>
+        </span>
+        <h3 class="font-medium leading-tight">Approval</h3>
+        <p class="text-sm">Await for your package</p>
       </li>
+    </ol>
 
-    </ul>
-  </div>
-  <div class="cart-bottom flex gap-4 justify-end mr-10">
-    <div class="text-4xl">Total price: <span class="text-red-700">$399.96</span></div>
-    <button class="btn btn-active btn-primary">Pay Now!</button>
+    <div class="relative w-full lg:w-[80%] h-full">
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 shadow-md sm:rounded-lg flex sm:table flex-wrap">
+        <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800 w-full">
+          Your products
+        </caption>
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr class="hidden sm:table-row">
+          <th scope="col" class="px-6 py-3">
+            Picture
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Name
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Count
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Price
+          </th>
+          <th scope="col" class="px-6 py-3">
+            <span class="sr-only">Remove</span>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-400 flex flex-wrap sm:table-row justify-around">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <img src="https://images.1a.lv/display/aikido/store/576ae7dd4c179e3e7382e63c7452eff5.jpg" alt="" class="max-h-12 sm:max-h-16">
+          </th>
+          <td class="sm:px-6 py-4 text-xl">
+            Intel I3
+          </td>
+          <td class="sm:px-6 py-4">
+            <div class="relative flex items-center max-w-[8rem]">
+              <button type="button" id="decrement-button" data-input-counter-decrement="quantity-input" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+                </svg>
+              </button>
+              <input type="text" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" required>
+              <button type="button" id="increment-button" data-input-counter-increment="quantity-input" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                </svg>
+              </button>
+            </div>
+          </td>
+          <td class="sm:px-6 py-4 text-xl">
+            $99
+          </td>
+          <td class="px-6 py-4 text-right w-full sm:w-fit">
+            <button type="button" class="sm:w-fit focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-full">Remove</button>
+          </td>
+        </tr>
+
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-400 flex flex-wrap sm:table-row justify-around">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <img src="https://images.1a.lv/display/aikido/store/576ae7dd4c179e3e7382e63c7452eff5.jpg" alt="" class="max-h-12 sm:max-h-16">
+          </th>
+          <td class="sm:px-6 py-4 text-xl">
+            Intel I3
+          </td>
+          <td class="sm:px-6 py-4">
+            <div class="relative flex items-center max-w-[8rem]">
+              <button type="button" id="decrement-button" data-input-counter-decrement="quantity-input" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+                </svg>
+              </button>
+              <input type="text" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" required>
+              <button type="button" id="increment-button" data-input-counter-increment="quantity-input" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                </svg>
+              </button>
+            </div>
+          </td>
+          <td class="sm:px-6 py-4 text-xl">
+            $99
+          </td>
+          <td class="px-6 py-4 text-right w-full sm:w-fit">
+            <button type="button" class="sm:w-fit focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-full">Remove</button>
+          </td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-400 flex flex-wrap sm:table-row justify-around">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <img src="https://images.1a.lv/display/aikido/store/576ae7dd4c179e3e7382e63c7452eff5.jpg" alt="" class="max-h-12 sm:max-h-16">
+          </th>
+          <td class="sm:px-6 py-4 text-xl">
+            Intel I3
+          </td>
+          <td class="sm:px-6 py-4">
+            <div class="relative flex items-center max-w-[8rem]">
+              <button type="button" id="decrement-button" data-input-counter-decrement="quantity-input" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+                </svg>
+              </button>
+              <input type="text" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" required>
+              <button type="button" id="increment-button" data-input-counter-increment="quantity-input" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                </svg>
+              </button>
+            </div>
+          </td>
+          <td class="sm:px-6 py-4 text-xl">
+            $99
+          </td>
+          <td class="px-6 py-4 text-right w-full sm:w-fit">
+            <button type="button" class="sm:w-fit focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-full">Remove</button>
+          </td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-400 flex flex-wrap sm:table-row justify-around">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <img src="https://images.1a.lv/display/aikido/store/576ae7dd4c179e3e7382e63c7452eff5.jpg" alt="" class="max-h-12 sm:max-h-16">
+          </th>
+          <td class="sm:px-6 py-4 text-xl">
+            Intel I3
+          </td>
+          <td class="sm:px-6 py-4">
+            <div class="relative flex items-center max-w-[8rem]">
+              <button type="button" id="decrement-button" data-input-counter-decrement="quantity-input" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+                </svg>
+              </button>
+              <input type="text" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" required>
+              <button type="button" id="increment-button" data-input-counter-increment="quantity-input" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                </svg>
+              </button>
+            </div>
+          </td>
+          <td class="sm:px-6 py-4 text-xl">
+            $99
+          </td>
+          <td class="px-6 py-4 text-right w-full sm:w-fit">
+            <button type="button" class="sm:w-fit focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-full">Remove</button>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+      <div class="cart-footer flex justify-between mt-4">
+        <p class="text-3xl">
+          Total: <span>$396</span>
+        </p>
+        <button type="button" class="px-6 py-3.5 text-base font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Next</button>
+      </div>
+    </div>
   </div>
 </div>

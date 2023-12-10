@@ -1,81 +1,56 @@
-<div class="mx-auto bg-secondary min-w-full navbar z-[100000]" >
-  <div class="mx-auto container flex items-center justify-between px-4 lg:px-0 w-[100%]">
-    <div class="">
-      <a class="cursor-pointer text-4xl text-white font-bold" routerLink="/">Veikals</a>
-    </div>
-    <div class="flex">
+<nav class="bg-white border-gray-200 dark:bg-gray-900 border-b-2 border-b-gray-300">
+  <div class=" flex flex-wrap items-center justify-between mx-auto p-4 container">
+    <a routerLink="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Veikals</span>
+    </a>
+    <div class="flex lg:order-2 items-center gap-4">
 
-      <div class="form-control">
-        <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto lg:inline-block hidden" />
-
-        <button class="btn btn-ghost btn-circle lg:hidden flex justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-        </button>
+      <div class="relative hidden lg:block">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+          </svg>
+          <span class="sr-only">Search icon</span>
+        </div>
+        <input type="text" id="search-navbar" class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
       </div>
-
-
-      <div class="dropdown dropdown-end justify-self-end">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-            <div class="indicator">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-              <span class="badge badge-sm indicator-item">8</span>
-            </div>
-          </div>
-          <div tabindex="0" class="mt-3 z-[100000000] card card-compact dropdown-content w-52 shadow-2xl bg-white ">
-            <div class="card-body">
-              <span class="font-bold text-lg text-black">8 Items</span>
-              <span class="text-black">Subtotal: $999</span>
-              <div class="card-actions">
-                <button class="btn btn-secondary btn-block" routerLink="cart">View cart</button>
-              </div>
-            </div>
-          </div>
+      <i class='bx bx-cart text-3xl cursor-pointer' routerLink="cart"></i>
+      <i class='bx bx-user-circle text-3xl' ></i>
+      <button data-collapse-toggle="navbar-search" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+      </button>
+    </div>
+    <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="navbar-search">
+      <div class="relative mt-3 lg:hidden">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+          </svg>
         </div>
-        <i class='bx bx-menu lg:hidden text-3xl cursor-pointer btn btn-ghost flex text-center' (click)="toggleSidebar()"></i>
-        <div class="dropdown dropdown-end lg:inline-block hidden">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-            <div class="w-10 rounded-full">
-              <img alt="Tailwind CSS Navbar component" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" />
-            </div>
-          </div>
-          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-              <a class="justify-between">
-                Profile
-                <span class="badge">New</span>
-              </a>
-            </li>
-            <li><a>Settings</a></li>
-            <li><a>Logout</a></li>
-          </ul>
-        </div>
+        <input type="text" id="search-navbar" class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
+      </div>
+      <ul class="flex flex-col p-4 lg:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-white dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-300  lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0 dark:text-white lg:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">Deals</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-300  lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Catalog</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-300 lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0 dark:text-white lg:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contacts</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-300  lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0 dark:text-white lg:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About Us</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-300  lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0 dark:text-white lg:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Wishlist</a>
+        </li>
+      </ul>
     </div>
   </div>
-</div>
-<div class="sidebar fixed right-0 top-0 bottom-0 w-[350px] bg-gray-200 z-[10000] flex flex-col p-6 gap-4 lg:hidden" [ngClass]="{'showSidebar': showSidebar, 'hideSidebar': !showSidebar}">
-  <div class="sidebar-top flex justify-between items-center">
-    <h1 class="font-bold text-xl">Hello, User!</h1>
-    <div class="">
-      <i class='bx bxs-user-circle lg:hidden text-3xl cursor-pointer btn btn-ghost text-right'></i>
-      <i class='bx bx-menu lg:hidden text-3xl cursor-pointer btn btn-ghost text-right' (click)="toggleSidebar()"></i>
-    </div>
-  </div>
-  <div class="sidebar-categories">
-    <ul class="flex flex-col gap-4 text-2xl px-2 mb-4">
-      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-git-branch' ></i></span> Processors</li>
-      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-fullscreen' ></i></span> Graphics Cards</li>
-      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bxs-memory-card' ></i></span> Memory</li>
-      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-save' ></i></span> HDD</li>
-      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bxs-save' ></i></span> SSD</li>
-      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-card' ></i></span> Monitors</li>
-      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bxs-keyboard'></i></span> Keyboards</li>
-      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bxs-mouse' ></i></span> Mouses</li>
-      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-checkbox-square' ></i></span> Cases</li>
-      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-power-off' ></i></span> Power Supplies</li>
-      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-headphone' ></i></span> Headphones</li>
-      <li class="min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] border-b-gray-400"><span><i class='bx bx-customize' ></i></span> Accessories</li>
+</nav>
 
-    </ul>
-  </div>
-  </div>
 
