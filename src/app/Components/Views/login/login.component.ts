@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../../Services/auth.service";
 import {readSpanComment} from "@angular/compiler-cli/src/ngtsc/typecheck/src/comments";
 
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit{
   formGroup!: FormGroup;
   error: string = "none";
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void{
@@ -32,10 +32,8 @@ export class LoginComponent implements OnInit{
     if(this.formGroup.status==="VALID"){
       this.authService.loginUser(this.formGroup.value).subscribe({
         next: (response: any): void=>{
-          alert("Login good")
           localStorage.setItem("token", response.token)
-          this.formGroup.reset()
-          this.error = "none"
+          this.router.navigate(["/account"])
         },
         error: (error: any): void=>{
           this.error = error.error.message

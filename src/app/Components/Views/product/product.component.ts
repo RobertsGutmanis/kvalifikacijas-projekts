@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ProductService} from "../../../Services/product.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
+import {Product} from "../../../Interfaces/product.interface";
 
 @Component({
   selector: 'app-product',
@@ -7,6 +11,24 @@ import { Component } from '@angular/core';
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit{
+  productId!: number;
+  product!: Product;
 
+  constructor(private productService: ProductService, private activeRoute: ActivatedRoute, private router: Router) {
+    this.productId = this.activeRoute.snapshot.params['id']
+    if (this.productId === 0 || isNaN(this.productId)) {
+      this.router.navigate(['/'])
+    }
+  }
+  ngOnInit() : void{
+    this.productService.getOneProduct(this.productId).subscribe({
+      next: (response: any): void=>{
+        this.product = response;
+      },
+      error: (error: HttpErrorResponse): void=>{
+        console.log(error)
+      }
+    })
+  }
 }

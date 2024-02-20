@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../../Services/auth.service";
 import {HttpClientModule, HttpErrorResponse} from "@angular/common/http";
 
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit{
   formGroup!: FormGroup;
   error: string = "none";
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void{
@@ -37,13 +37,11 @@ export class RegisterComponent implements OnInit{
     if (this.formGroup.status === "VALID") {
       this.authService.registerUser(this.formGroup.value).subscribe({
         next: (response: any): void=>{
-          alert("user created")
           localStorage.setItem("token", response.token)
-          this.formGroup.reset()
-          this.error = "none"
+          this.router.navigate(["/account"])
         },
-        error: (error: HttpErrorResponse): void=>{
-          console.log(error)
+        error: (error: any): void=>{
+          this.error = error.error.message
         }
       })
     } else {
