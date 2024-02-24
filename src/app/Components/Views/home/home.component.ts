@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void{
     this.productService.getProducts().subscribe({
       next: (response: any): void=>{
-        this.products = response.data;
+        this.products = response.data.slice(0, 4);
       },
       error: (error: HttpErrorResponse): void=>{
         console.log(error)

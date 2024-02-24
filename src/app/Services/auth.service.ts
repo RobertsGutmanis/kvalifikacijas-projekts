@@ -13,15 +13,15 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   loginUser(data: Login): Observable<any>{
-    return this.http.post('http://127.0.0.1:8001/api/login', data)
+    return this.http.post('http://127.0.0.1:8000/api/login', data)
   }
 
   registerUser(data: Register): Observable<any>{
-    return this.http.post('http://127.0.0.1:8001/api/register', data)
+    return this.http.post('http://127.0.0.1:8000/api/register', data)
   }
 
   getUser(): Observable<any>{
-    return this.http.get('http://127.0.0.1:8001/api/user',{
+    return this.http.get('http://127.0.0.1:8000/api/user',{
       headers: new HttpHeaders({
         Authorization: `Bearer ${localStorage.getItem("token") ?? ""}`
       }),
@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   logout(): Observable<any>{
-    return this.http.post(`http://127.0.0.1:8001/api/logout`, {},{
+    return this.http.post(`http://127.0.0.1:8000/api/logout`, {},{
       headers: new HttpHeaders({
         Authorization: `Bearer ${localStorage.getItem("token") ?? ""}`
       }),

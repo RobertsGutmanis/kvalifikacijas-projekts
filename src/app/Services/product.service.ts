@@ -10,10 +10,14 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<any>{
-    return this.http.get(`http://127.0.0.1:8001/api/products`)
+    return this.http.get(`http://127.0.0.1:8000/api/products`)
   }
 
   getOneProduct(id: number): Observable<any>{
-    return this.http.get(`http://127.0.0.1:8001/api/products/${id}`)
+    return this.http.get(`http://127.0.0.1:8000/api/products/${id}`)
+  }
+
+  getCategoryProducts(category: string): Observable<any>{
+    return this.http.get(`http://127.0.0.1:8000/api/catalog/${category}`)
   }
 }

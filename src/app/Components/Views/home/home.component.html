@@ -3,18 +3,18 @@
     <div class="lg:block hidden">
       <h1 class="font-bold text-4xl mb-4 pl-4">Categories</h1>
       <ul class="flex flex-col text-2xl px-2 mb-4">
-        <li class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-git-branch' ></i></span> Processors</li>
-        <li class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-fullscreen' ></i></span> Graphics Cards</li>
-        <li class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bxs-memory-card' ></i></span> Memory</li>
-        <li class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-save' ></i></span> HDD</li>
-        <li class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bxs-save' ></i></span> SSD</li>
-        <li class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-card' ></i></span> Monitors</li>
-        <li class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bxs-keyboard'></i></span> Keyboards</li>
-        <li class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bxs-mouse' ></i></span> Mouses</li>
-        <li class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-checkbox-square' ></i></span> Cases</li>
-        <li class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-power-off' ></i></span> Power Supplies</li>
-        <li class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-headphone' ></i></span> Headphones</li>
-        <li class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-customize' ></i></span> Accessories</li>
+        <li routerLink="catalog/CPU" class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-git-branch' ></i></span> Processors</li>
+        <li routerLink="catalog/GPU" class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-fullscreen' ></i></span> Graphics Cards</li>
+        <li routerLink="catalog/RAM" class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bxs-memory-card' ></i></span> Memory</li>
+        <li routerLink="catalog/HDD" class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-save' ></i></span> HDD</li>
+        <li routerLink="catalog/SSD" class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bxs-save' ></i></span> SSD</li>
+        <li routerLink="catalog/Monitor" class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-card' ></i></span> Monitors</li>
+        <li routerLink="catalog/Keyboard" class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bxs-keyboard'></i></span> Keyboards</li>
+        <li routerLink="catalog/Mouse" class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bxs-mouse' ></i></span> Mouses</li>
+        <li routerLink="catalog/Case" class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-checkbox-square' ></i></span> Cases</li>
+        <li routerLink="catalog/PSU" class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-power-off' ></i></span> Power Supplies</li>
+        <li routerLink="catalog/Headphones" class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-headphone' ></i></span> Headphones</li>
+        <li routerLink="catalog/Accessories" class="pl-2 min-w-fit cursor-pointer hover:bg-gray-300 transition-all border-b-[2px] py-1.5 border-b-gray-400"><span><i class='bx bx-customize' ></i></span> Accessories</li>
 
       </ul>
       <div class="advertisement">
@@ -75,13 +75,13 @@
             @for(product of products; track product.id){
             <div (click)="onGoToProduct(product.id)" class="w-[40%] md:w-[22%] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:scale-105 transition-all" routerLink="product">
               <a>
-                <img class="p-8 rounded-t-lg" src="{{product.image_url}}" alt="product image" />
+                <img class="p-8 rounded-t-lg aspect-square" src="{{product.image_url}}" alt="product image" />
               </a>
               <div class="px-5 pb-5">
                 <a>
                   <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{product.name}}</h5>
                 </a>
-                <div class="flex items-center justify-between flex-wrap gap-2">
+                <div class="flex flex-col items-start justify-between flex-wrap gap-2">
                   <span class="text-3xl font-bold dark:text-white text-red-600">${{product.price}}</span>
                   <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
                 </div>

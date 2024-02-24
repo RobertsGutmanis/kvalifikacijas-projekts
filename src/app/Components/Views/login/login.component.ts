@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../../Services/auth.service";
-import {readSpanComment} from "@angular/compiler-cli/src/ngtsc/typecheck/src/comments";
 
 @Component({
   selector: 'app-login',
@@ -23,7 +22,7 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void{
     this.formGroup = new FormGroup({
-      "email": new FormControl("", Validators.required),
+      "email": new FormControl("", [Validators.required]),
       "password": new FormControl("", Validators.required)
     })
   }
@@ -40,7 +39,7 @@ export class LoginComponent implements OnInit{
         }
       })
     }else{
-      this.error = "Authentication error!"
+      this.error = "Lauki nav aizpildīti"
     }
   }
 }

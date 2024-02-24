@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
     initFlowbite();
 
     setTimeout((): void=>{
-      console.clear()
+      // console.clear()
     }, 1000)
   }
 }
