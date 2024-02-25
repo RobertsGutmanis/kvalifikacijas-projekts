@@ -6,10 +6,16 @@ import {Observable, Subject} from "rxjs";
   providedIn: 'root'
 })
 export class ProductService {
-  cartItemArr: number[] = JSON.parse(localStorage.getItem("cart_items_id") ?? "");
   cartItemCount: Map<number, number> = new Map();
+  cartItemArr!: number[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    if(localStorage.getItem("cart_item_id")){
+      this.cartItemArr = JSON.parse(localStorage.getItem("cart_items_id") ?? "");
+    }else{
+      this.cartItemArr = []
+    }
+  }
 
   getProducts(): Observable<any>{
     return this.http.get(`http://127.0.0.1:8000/api/products`)
