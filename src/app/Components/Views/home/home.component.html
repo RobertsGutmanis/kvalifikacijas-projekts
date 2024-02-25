@@ -73,17 +73,17 @@
         </div>
           <div class="flex flex-wrap md:justify-between justify-center w-full gap-4 md:gap-0 cursor-pointer">
             @for(product of products; track product.id){
-            <div (click)="onGoToProduct(product.id)" class="w-[40%] md:w-[22%] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:scale-105 transition-all" routerLink="product">
-              <a>
-                <img class="p-8 rounded-t-lg aspect-square" src="{{product.image_url}}" alt="product image" />
+            <div class="w-[40%] md:w-[22%] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:scale-105 transition-all flex flex-col " >
+              <a >
+                <img (click)="onGoToProduct(product.id)" class="p-8 rounded-t-lg aspect-square" src="{{product.image_url}}" alt="product image" />
               </a>
               <div class="px-5 pb-5">
                 <a>
-                  <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{product.name}}</h5>
+                  <h5 (click)="onGoToProduct(product.id)"  class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white text-ellipsis whitespace-nowrap overflow-hidden">{{product.name}}</h5>
                 </a>
                 <div class="flex flex-col items-start justify-between flex-wrap gap-2">
-                  <span class="text-3xl font-bold dark:text-white text-red-600">${{product.price}}</span>
-                  <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+                  <span (click)="onGoToProduct(product.id)"  class="text-3xl font-bold dark:text-white text-red-600">${{product.price}}</span>
+                  <a (click)="addToCart(product.id)" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
                 </div>
               </div>
             </div>

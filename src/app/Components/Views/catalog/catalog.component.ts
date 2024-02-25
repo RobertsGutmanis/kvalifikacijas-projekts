@@ -69,4 +69,7 @@ export class CatalogComponent implements OnInit{
       this.products = placeholderArray;
     }
   }
+  addToCart(id: number): void{
+    this.productService.addToCart(id)
+  }
 }

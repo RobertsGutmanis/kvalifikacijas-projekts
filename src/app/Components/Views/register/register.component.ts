@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit{
   formGroup!: FormGroup;
   error: string = "none";
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router  ) {
   }
 
   ngOnInit(): void{

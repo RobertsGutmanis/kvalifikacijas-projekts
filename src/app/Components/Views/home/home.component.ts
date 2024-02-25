@@ -36,4 +36,8 @@ export class HomeComponent implements OnInit{
   onGoToProduct(id: number): void{
     this.router.navigate(['product', id])
   }
+
+  addToCart(id: number): void{
+    this.productService.addToCart(id)
+  }
 }

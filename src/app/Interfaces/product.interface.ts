@@ -6,5 +6,7 @@ export interface Product{
   image_url: string,
   price: number,
   price_change: Date,
-  last_price: number
+  last_price: number,
+  count?: number,
+  totalPrice?:number
 }
