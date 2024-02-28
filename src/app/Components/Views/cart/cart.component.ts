@@ -2,15 +2,19 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../../Services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Product} from "../../../Interfaces/product.interface";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
 export class CartComponent implements OnInit{
+  countArray: number[] = [1,2,3,4,5,6,7,8,9,10]
   cartItems: Product[] = [];
   totalPrice: number = 0;
   constructor(private productService: ProductService) {
@@ -50,4 +54,11 @@ export class CartComponent implements OnInit{
     })
 
   }
+
+  onChangeCount(count: any): void{
+    console.log(count)
+  }
+
+  protected readonly event = event;
+  protected readonly Event = Event;
 }

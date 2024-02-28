@@ -7,6 +7,6 @@ export interface Product{
   price: number,
   price_change: Date,
   last_price: number,
-  count?: number,
+  count: number,
   totalPrice?:number
 }

@@ -21,6 +21,7 @@ export class CatalogComponent implements OnInit{
   products!: Product[];
   manufacturers: string[] = [];
   manufacturerFilter: string[] = [];
+  currentPriceRange: number = 100;
   constructor(private activeRoute: ActivatedRoute, private productService: ProductService, private router: Router) {
   }
 
@@ -28,8 +29,8 @@ export class CatalogComponent implements OnInit{
     this.parameter = this.activeRoute.snapshot.paramMap.get('category') ?? "";
     this.productService.getCategoryProducts(this.parameter).subscribe({
       next: (response: any): void=>{
-        this.products = response.data;
-        this.immutableProducts = response.data
+        this.products = response.data.filter((data:any): boolean=>true)
+        this.immutableProducts = response.data.filter((data:any): boolean=>true)
         this.products.forEach((Product: Product): void=>{
           if(!this.manufacturers.includes(Product.manufacturer)){
             this.manufacturers.push(Product.manufacturer)
@@ -56,11 +57,11 @@ export class CatalogComponent implements OnInit{
 
 
     if (this.manufacturerFilter.length === 0) {
-      this.products = this.immutableProducts
+      this.products = this.immutableProducts.filter((data:any): boolean=>true)
     } else {
       let placeholderArray: Product[] = [];
       this.manufacturerFilter.forEach((filter: string, index: number): void => {
-        let productArray: Product[] = this.immutableProducts
+        let productArray: Product[] = this.immutableProducts.filter((data:any): boolean=>true)
           .filter((product: Product): boolean => {
             return product.manufacturer.includes(filter);
           });
@@ -71,5 +72,30 @@ export class CatalogComponent implements OnInit{
   }
   addToCart(id: number): void{
     this.productService.addToCart(id)
+  }
+
+  onPriceChange(value: any): void{
+    this.currentPriceRange = +value;
+    this.products = this.immutableProducts.filter((product: Product): boolean => product.price >= +value)
+  }
+
+  onSortChange(sort: string): void{
+    if(sort==="new"){
+      this.products = this.immutableProducts.filter((data:any): boolean=>true)
+      console.log(this.immutableProducts)
+    }
+    else if(sort==="low"){
+      this.products = this.products.sort(this.sortPriceLow)
+    }else if(sort==="high"){
+      this.products = this.products.sort(this.sortPriceHigh)
+    }
+  }
+
+   sortPriceLow(a: any, b: any): number {
+    return a.price - b.price;
+  }
+
+  sortPriceHigh(a: any, b: any): number {
+    return b.price - a.price;
   }
 }
