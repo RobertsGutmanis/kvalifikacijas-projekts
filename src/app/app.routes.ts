@@ -6,6 +6,7 @@ import {LoginComponent} from "./Components/Views/login/login.component";
 import {RegisterComponent} from "./Components/Views/register/register.component";
 import {AccountComponent} from "./Components/Views/account/account.component";
 import {CatalogComponent} from "./Components/Views/catalog/catalog.component";
+import {SearchComponent} from "./Components/Views/search/search.component";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,5 +15,6 @@ export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'account', component: AccountComponent},
-  {path: 'catalog/:category', component: CatalogComponent}
+  {path: 'catalog/:category', component: CatalogComponent},
+  {path: 'search/:value', component: SearchComponent}
 ];

@@ -6,28 +6,30 @@ import {Product} from "../../../Interfaces/product.interface";
 import {TitlePipe} from "../../../Pipes/title.pipe";
 
 @Component({
-  selector: 'app-catalog',
+  selector: 'app-search',
   standalone: true,
   imports: [
     RouterLink,
     TitlePipe
   ],
-  templateUrl: './catalog.component.html',
-  styleUrl: './catalog.component.scss'
+  templateUrl: './search.component.html',
+  styleUrl: './search.component.scss'
 })
-export class CatalogComponent implements OnInit{
-  parameter!:string;
+export class SearchComponent implements OnInit{
+  searchParam: string;
   immutableProducts!: Product[];
   products: Product[] = [];
   manufacturers: string[] = [];
   manufacturerFilter: string[] = [];
   currentPriceRange: number = 100;
+
   constructor(private activeRoute: ActivatedRoute, private productService: ProductService, private router: Router) {
+    this.searchParam = this.activeRoute.snapshot.params['value']
+    console.log(this.searchParam)
   }
 
   ngOnInit(): void {
-    this.parameter = this.activeRoute.snapshot.paramMap.get('category') ?? "";
-    this.productService.getCategoryProducts(this.parameter).subscribe({
+    this.productService.searchForProduct(this.searchParam).subscribe({
       next: (response: any): void=>{
         this.products = response.data.filter((data:any): boolean=>true)
         this.immutableProducts = response.data.filter((data:any): boolean=>true)
@@ -36,7 +38,6 @@ export class CatalogComponent implements OnInit{
             this.manufacturers.push(Product.manufacturer)
           }
         })
-
       },
       error: (error: HttpErrorResponse): void=>{
         console.log(error)
@@ -91,7 +92,7 @@ export class CatalogComponent implements OnInit{
     }
   }
 
-   sortPriceLow(a: any, b: any): number {
+  sortPriceLow(a: any, b: any): number {
     return a.price - b.price;
   }
 
