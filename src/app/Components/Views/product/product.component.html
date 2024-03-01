@@ -30,10 +30,10 @@
             </tr>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Cores
+                Description
               </th>
               <td class="px-6 py-4">
-                4
+                {{product.description}}
               </td>
             </tr>
             </tbody>
@@ -71,48 +71,16 @@
         <div class="relative overflow-x-auto">
           <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Manufacturer
-              </td>
-              <td class="px-6 py-4">
-                Intel
-              </td>
-              <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Model
-              </td>
-              <td class="px-6 py-4">
-                I3-10100
-              </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Cores
-              </th>
-              <td class="px-6 py-4">
-                4
-              </td>
-              <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Threads
-              </td>
-              <td class="px-6 py-4">
-                8
-              </td>
-            </tr>
-            <tr class="bg-white dark:bg-gray-800">
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Speed
-              </th>
-              <td class="px-6 py-4">
-                3Ghz
-              </td>
-              <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Cache
-              </td>
-              <td class="px-6 py-4">
-                12MB
-              </td>
-            </tr>
+              @for (spec of specifications; track spec.id){
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{spec.key}}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{spec.value}}
+                  </td>
+                </tr>
+              }
             </tbody>
           </table>
         </div>

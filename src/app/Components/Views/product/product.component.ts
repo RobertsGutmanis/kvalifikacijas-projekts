@@ -3,6 +3,7 @@ import {ProductService} from "../../../Services/product.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Product} from "../../../Interfaces/product.interface";
+import {Specifications} from "../../../Interfaces/specifications.interface";
 
 @Component({
   selector: 'app-product',
@@ -14,6 +15,7 @@ import {Product} from "../../../Interfaces/product.interface";
 export class ProductComponent implements OnInit{
   productId!: number;
   product!: Product;
+  specifications: Specifications[] = []
 
   constructor(private productService: ProductService, private activeRoute: ActivatedRoute, private router: Router) {
     this.productId = this.activeRoute.snapshot.params['id']
@@ -24,7 +26,8 @@ export class ProductComponent implements OnInit{
   ngOnInit() : void{
     this.productService.getOneProduct(this.productId).subscribe({
       next: (response: any): void=>{
-        this.product = response;
+        this.product = response.product;
+        this.specifications = response.specification
       },
       error: (error: HttpErrorResponse): void=>{
         console.log(error)
