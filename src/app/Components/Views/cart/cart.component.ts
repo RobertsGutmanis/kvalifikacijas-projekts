@@ -13,24 +13,28 @@ import {FormsModule} from "@angular/forms";
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
-export class CartComponent implements OnInit{
-  countArray: number[] = [1,2,3,4,5,6,7,8,9,10]
+export class CartComponent implements OnInit {
+  countArray: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   cartItems: Product[] = [];
   totalPrice: number = 0;
+  protected readonly event = event;
+  protected readonly Event = Event;
+
   constructor(private productService: ProductService) {
   }
 
   ngOnInit(): void {
     this.getCartItems()
   }
-  getCartItems(): void{
+
+  getCartItems(): void {
     this.productService.getCartItemCount().forEach((count: any, key: any): void => {
       this.productService.getOneProduct(key).subscribe({
         next: (value: any): void => {
-          value.count = count;
-          value.totalPrice = value.count * value.price
-          this.cartItems.push(value)
-          this.totalPrice = this.totalPrice + value.totalPrice
+          value.product.count = count;
+          value.product.totalPrice = value.product.count * value.product.price
+          this.cartItems.push(value.product)
+          this.totalPrice = this.totalPrice + value.product.totalPrice
         },
         error: (error: HttpErrorResponse): void => {
           console.log(error);
@@ -39,26 +43,23 @@ export class CartComponent implements OnInit{
     });
   }
 
-  removeFromCart(id: number): void{
+  removeFromCart(id: number): void {
     this.productService.removeFromCart(id)
     this.totalPrice = 0;
-    this.cartItems.forEach((product: Product, index: number): void=>{
-      if(product.id === id){
+    this.cartItems.forEach((product: Product, index: number): void => {
+      if (product.id === id) {
         this.cartItems.splice(index, 1)
       }
     })
-    this.cartItems.forEach((product: Product, index: number): void=>{
-      if(product.totalPrice){
+    this.cartItems.forEach((product: Product, index: number): void => {
+      if (product.totalPrice) {
         this.totalPrice = this.totalPrice + product.totalPrice
       }
     })
 
   }
 
-  onChangeCount(count: any): void{
+  onChangeCount(count: any): void {
     console.log(count)
   }
-
-  protected readonly event = event;
-  protected readonly Event = Event;
 }

@@ -14,28 +14,28 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
   showSidebar: boolean = false;
   formGroup!: FormGroup;
 
   constructor(private router: Router) {
   }
 
-  ngOnInit() : void{
+  ngOnInit(): void {
     this.formGroup = new FormGroup({
       "search": new FormControl('', Validators.required)
     })
   }
 
-  authRoute(): void{
-    if(localStorage.getItem("token")){
+  authRoute(): void {
+    if (localStorage.getItem("token")) {
       this.router.navigate(["/account"])
-    }else{
+    } else {
       this.router.navigate(["/login"])
     }
   }
 
-  onSubmit(): void{
+  onSubmit(): void {
     this.router.navigate(["/search", this.formGroup.value.search]).then((): void => {
       window.location.reload();
     });

@@ -1,4 +1,4 @@
-export interface Specifications{
+export interface Specifications {
   id: number,
   product_id: number,
   key: string,

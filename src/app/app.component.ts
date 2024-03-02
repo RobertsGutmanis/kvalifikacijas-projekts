@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {RouterOutlet} from '@angular/router';
 import {HeaderComponent} from "./Components/header/header.component";
 import {FooterComponent} from "./Components/footer/footer.component";
-import { initFlowbite } from 'flowbite';
+import {initFlowbite} from 'flowbite';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +12,13 @@ import { initFlowbite } from 'flowbite';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'kvalf-frontend';
 
   ngOnInit(): void {
     initFlowbite();
 
-    setTimeout((): void=>{
+    setTimeout((): void => {
       // console.clear()
     }, 1000)
   }

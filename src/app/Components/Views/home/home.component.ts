@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { NgOptimizedImage } from '@angular/common'
+import {NgOptimizedImage} from '@angular/common'
 import {Router, RouterLink} from "@angular/router";
 import {ProductService} from "../../../Services/product.service";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Product} from "../../../Interfaces/product.interface";
 
@@ -16,28 +15,29 @@ import {Product} from "../../../Interfaces/product.interface";
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
 
   products!: Product[];
 
   constructor(private router: Router, private productService: ProductService) {
   }
-  ngOnInit(): void{
+
+  ngOnInit(): void {
     this.productService.getProducts().subscribe({
-      next: (response: any): void=>{
+      next: (response: any): void => {
         this.products = response.data.slice(0, 4);
       },
-      error: (error: HttpErrorResponse): void=>{
+      error: (error: HttpErrorResponse): void => {
         console.log(error)
       }
     })
   }
 
-  onGoToProduct(id: number): void{
+  onGoToProduct(id: number): void {
     this.router.navigate(['product', id])
   }
 
-  addToCart(id: number): void{
+  addToCart(id: number): void {
     this.productService.addToCart(id)
   }
 }

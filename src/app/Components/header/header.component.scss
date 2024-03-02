@@ -1,9 +1,11 @@
-.showSidebar{
+.showSidebar {
   transform: translateX(0);
 }
-.hideSidebar{
+
+.hideSidebar {
   transform: translateX(100%);
 }
-.sidebar{
+
+.sidebar {
   transition: all .3s ease;
 }

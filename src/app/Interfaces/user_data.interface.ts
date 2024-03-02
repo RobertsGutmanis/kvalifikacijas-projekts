@@ -1,4 +1,4 @@
-export interface UserData{
+export interface UserData {
   address: string,
   zip: string,
   city: string,

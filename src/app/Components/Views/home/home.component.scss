@@ -9,10 +9,12 @@
     align-items: center;
     justify-content: center;
   }
-  &-text{
+
+  &-text {
     align-self: flex-start;
   }
-  &-images{
+
+  &-images {
     object-fit: contain;
     aspect-ratio: 16/10;
     width: 100%;

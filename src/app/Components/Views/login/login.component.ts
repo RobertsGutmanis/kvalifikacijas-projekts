@@ -13,32 +13,32 @@ import {AuthService} from "../../../Services/auth.service";
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   formGroup!: FormGroup;
   error: string = "none";
 
   constructor(private authService: AuthService, private router: Router) {
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.formGroup = new FormGroup({
       "email": new FormControl("", [Validators.required]),
       "password": new FormControl("", Validators.required)
     })
   }
 
-  onSubmit(): void{
-    if(this.formGroup.status==="VALID"){
+  onSubmit(): void {
+    if (this.formGroup.status === "VALID") {
       this.authService.loginUser(this.formGroup.value).subscribe({
-        next: (response: any): void=>{
+        next: (response: any): void => {
           localStorage.setItem("token", response.token)
           this.router.navigate(["/account"])
         },
-        error: (error: any): void=>{
+        error: (error: any): void => {
           this.error = error.error.message
         }
       })
-    }else{
+    } else {
       this.error = "Lauki nav aizpildīti"
     }
   }

@@ -12,7 +12,7 @@ import {Specifications} from "../../../Interfaces/specifications.interface";
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
-export class ProductComponent implements OnInit{
+export class ProductComponent implements OnInit {
   productId!: number;
   product!: Product;
   specifications: Specifications[] = []
@@ -23,15 +23,20 @@ export class ProductComponent implements OnInit{
       this.router.navigate(['/'])
     }
   }
-  ngOnInit() : void{
+
+  ngOnInit(): void {
     this.productService.getOneProduct(this.productId).subscribe({
-      next: (response: any): void=>{
+      next: (response: any): void => {
         this.product = response.product;
         this.specifications = response.specification
       },
-      error: (error: HttpErrorResponse): void=>{
+      error: (error: HttpErrorResponse): void => {
         console.log(error)
       }
     })
+  }
+
+  onAddToWishlist(id: number): void {
+    this.productService.addToWishlist(id)
   }
 }

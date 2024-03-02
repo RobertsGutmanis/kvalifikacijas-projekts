@@ -1,4 +1,4 @@
-export interface Product{
+export interface Product {
   name: string,
   description: string,
   manufacturer: string,
@@ -8,5 +8,5 @@ export interface Product{
   price_change: Date,
   last_price: number,
   count: number,
-  totalPrice?:number
+  totalPrice?: number
 }

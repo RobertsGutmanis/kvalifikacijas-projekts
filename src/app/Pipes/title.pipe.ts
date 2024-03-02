@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
   name: 'title',
@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TitlePipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
-    if(value==="CPU"){
+    if (value === "CPU") {
       return "Processors"
     }
     return value

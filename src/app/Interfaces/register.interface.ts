@@ -1,4 +1,4 @@
-export interface Register{
+export interface Register {
   name: string,
   middle_name?: string,
   last_name: string,
