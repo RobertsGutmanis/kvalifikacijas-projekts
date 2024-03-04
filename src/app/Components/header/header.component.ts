@@ -21,12 +21,14 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) {
   }
 
+  //Izveido formas grupu priekš meklēšanas
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       "search": new FormControl('', Validators.required)
     })
   }
 
+  //Novirza lietotājus uz login vai account skatiem attiecīgi pēc to statusa
   authRoute(): void {
     if (localStorage.getItem("token")) {
       this.router.navigate(["/account"])
@@ -35,7 +37,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  //Novirza lietotāju uz meklēšanas skatu, pēc meklēšanas formas iesniegšanas
   onSubmit(): void {
+    if(this.formGroup.status==="INVALID") return
     this.router.navigate(["/search", this.formGroup.value.search]).then((): void => {
       window.location.reload();
     });

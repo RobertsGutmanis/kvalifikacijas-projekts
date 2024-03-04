@@ -17,8 +17,6 @@ export class CartComponent implements OnInit {
   countArray: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   cartItems: Product[] = [];
   totalPrice: number = 0;
-  protected readonly event = event;
-  protected readonly Event = Event;
 
   constructor(private productService: ProductService) {
   }
@@ -27,6 +25,7 @@ export class CartComponent implements OnInit {
     this.getCartItems()
   }
 
+  //Iegūst visas groza preces, saglabā tās maibīgajā un aprēķina groza kopējo summu
   getCartItems(): void {
     this.productService.getCartItemCount().forEach((count: any, key: any): void => {
       this.productService.getOneProduct(key).subscribe({
@@ -43,6 +42,7 @@ export class CartComponent implements OnInit {
     });
   }
 
+  //Izņem preci no groza un no jauna aprēķina groza kopējo summu
   removeFromCart(id: number): void {
     this.productService.removeFromCart(id)
     this.totalPrice = 0;
@@ -52,14 +52,43 @@ export class CartComponent implements OnInit {
       }
     })
     this.cartItems.forEach((product: Product, index: number): void => {
-      if (product.totalPrice) {
-        this.totalPrice = this.totalPrice + product.totalPrice
-      }
+      this.totalPrice = this.totalPrice + (product.totalPrice ?? 0)
     })
 
   }
 
-  onChangeCount(count: any): void {
-    console.log(count)
+  //Nosaka vai lietotājs mainījis preces daudzumu grozā uz lielāku vai mazāku un saglabā to
+  onChangeCount(count: string, id: number): void {
+    this.totalPrice = 0;
+    const idsArr: number[] = JSON.parse(localStorage.getItem("cart_items_id") ?? "")
+    const idCount: number = idsArr.filter((id_num: number) : boolean => id_num === id).length
+
+    if(idCount < +count){
+      const difference: number = +count - idCount
+      for(let i: number = 0; i < difference; i++){
+        idsArr.push(id)
+      }
+    }
+    else if(idCount > +count){
+      const difference: number = (+count - idCount) * -1
+      for(let i: number = 0; i < difference; i++){
+        let currentIndex: number = idsArr.indexOf(id)
+        idsArr.splice(currentIndex, 1)
+      }
+    }
+    localStorage.setItem("cart_items_id", JSON.stringify(idsArr))
+    this.changePrices(id)
+  }
+
+  //Kalkulē produktu cenas un groza kopējo cenu
+  changePrices(id: number): void{
+    const idsArr: number[] = JSON.parse(localStorage.getItem("cart_items_id") ?? "")
+    this.cartItems.forEach((item: Product): void=>{
+      if(item.id === id){
+        item.count = idsArr.filter((id_num: number) : boolean => id_num === id).length
+        item.totalPrice = item.price * item.count
+      }
+      this.totalPrice = this.totalPrice + (item.totalPrice ?? 0);
+    })
   }
 }

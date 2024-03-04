@@ -19,6 +19,7 @@ export class AccountComponent implements OnInit {
 
   }
 
+  //Iegūst lietotāja datus no servera un saglabā tos mainīgajā
   ngOnInit(): void {
     this.authService.getUser().subscribe({
       next: (response: any): void => {
@@ -30,6 +31,7 @@ export class AccountComponent implements OnInit {
     })
   }
 
+  //Izvada lietotāju no konta un noved uz sākuma skatu
   onLogout(): void {
     this.authService.logout().subscribe({
       next: (response: void): void => {

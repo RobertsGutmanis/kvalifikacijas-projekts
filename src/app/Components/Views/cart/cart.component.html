@@ -90,19 +90,12 @@
               </td>
               <td class="sm:px-6 py-4">
 
-                <select
+                <select (change)="onChangeCount(count.value, item.id)" #count
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-fit p-2.5">
                   <option disabled selected value="{{item.count}}">{{ item.count }}</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
+                  @for(count of countArray; track count){
+                    <option value="{{count}}">{{count}}</option>
+                  }
                 </select>
               </td>
               <td class="sm:px-6 py-4 text-xl">

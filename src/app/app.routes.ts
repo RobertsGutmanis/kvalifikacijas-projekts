@@ -9,6 +9,7 @@ import {CatalogComponent} from "./Components/Views/catalog/catalog.component";
 import {SearchComponent} from "./Components/Views/search/search.component";
 import {WishlistComponent} from "./Components/Views/wishlist/wishlist.component";
 import {CategoriesComponent} from "./Components/Views/categories/categories.component";
+import {ContactComponent} from "./Components/Views/contact/contact.component";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -20,5 +21,6 @@ export const routes: Routes = [
   {path: 'catalog/:category', component: CatalogComponent},
   {path: 'search/:value', component: SearchComponent},
   {path: 'wishlist', component: WishlistComponent},
-  {path: 'categories', component: CategoriesComponent}
+  {path: 'categories', component: CategoriesComponent},
+  {path: 'contact', component: ContactComponent}
 ];

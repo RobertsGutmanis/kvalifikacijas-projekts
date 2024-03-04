@@ -7,34 +7,42 @@ import {Observable} from "rxjs";
 })
 export class ProductService {
   cartItemCount: Map<number, number> = new Map();
-  cartItemArr!: number[];
-  wishlistItemArr: any[] = JSON.parse(localStorage.getItem("wishlist_items_id") ?? "");
+  cartItemArr: number[] = [];
+  wishlistItemArr: any[] = [];
+  url: string = `http://127.0.0.1:8000/api`
 
+  //Uz projekta sākumu pārbauda, vai localStorage eksistē "wishlist_items_id" un "cart_items_id", un ja eksistē, tad to vērtības ieliek mainīgajos
   constructor(private http: HttpClient) {
+    if(localStorage.getItem("wishlist_items_id")){
+      this.wishlistItemArr = JSON.parse(localStorage.getItem("wishlist_items_id") ?? "");
+    }
     if (localStorage.getItem("cart_item_id")) {
       this.cartItemArr = JSON.parse(localStorage.getItem("cart_items_id") ?? "");
-    } else {
-      this.cartItemArr = []
     }
   }
 
+  //No servera pieprasa visus produktus
   getProducts(): Observable<any> {
-    return this.http.get(`http://127.0.0.1:8000/api/products`)
+    return this.http.get(`${this.url}/products`)
   }
 
+  //No servera pieprasa vienu produktu pēc tā ID
   getOneProduct(id: number): Observable<any> {
-    return this.http.get(`http://127.0.0.1:8000/api/products/${id}`)
+    return this.http.get(`${this.url}/products/${id}`)
   }
 
+  //No servera pieprasa visus produktus kategorijā pēc kategorijas
   getCategoryProducts(category: string): Observable<any> {
-    return this.http.get(`http://127.0.0.1:8000/api/catalog/${category}`)
+    return this.http.get(`${this.url}/catalog/${category}`)
   }
 
+  //Pievieno jaunu produktu grozam un saglabā localStorage
   addToCart(id: number): void {
     this.cartItemArr.push(id)
     localStorage.setItem("cart_items_id", JSON.stringify(this.cartItemArr))
   }
 
+  //Iegūst produktu daudzumu grozā
   getCartItemCount(): Map<number, number> {
     let uniqueArray: any[] = [...new Set(JSON.parse(localStorage.getItem("cart_items_id") ?? ""))];
     uniqueArray.forEach((el: number): void => {
@@ -44,16 +52,19 @@ export class ProductService {
     return this.cartItemCount
   }
 
+  //Izņem produktu no groza
   removeFromCart(id: number): void {
     let cartItems = JSON.parse(localStorage.getItem("cart_items_id") ?? "")
     let filteredArray = cartItems.filter((e: number): boolean => e !== id)
     localStorage.setItem("cart_items_id", JSON.stringify(filteredArray))
   }
 
+  //Meklē produktu pēc nosaukuma
   searchForProduct(value: string): Observable<any> {
-    return this.http.get(`http://localhost:8000/api/search/${value}`)
+    return this.http.get(`${this.url}/search/${value}`)
   }
 
+  //Pievieno produktu vēlmju sarakstam un saglabā localStorage
   addToWishlist(id: number): void {
     if (!this.wishlistItemArr.includes(id)) {
       this.wishlistItemArr.push(id)
@@ -62,20 +73,19 @@ export class ProductService {
     }
   }
 
+  //Iegūst vēlmju saraksta produktus no servera pēc ID
   getWishlistItems(ids: string): Observable<any> {
-    return this.http.get('http://localhost:8000/api/wishlist', {
+    return this.http.get('${this.url}/wishlist', {
       headers: {
         "wishlist_ids": ids
       }
     })
   }
 
+  //Noņem produktu no vēlmju saraksta
   removeFromWishlist(id: number): void {
-    console.log(this.wishlistItemArr)
     const product_index: number = this.wishlistItemArr.indexOf(id)
-    console.log(product_index)
     this.wishlistItemArr.splice(product_index, 1)
-    console.log(this.wishlistItemArr)
     localStorage.setItem("wishlist_items_id", JSON.stringify(this.wishlistItemArr))
   }
 }

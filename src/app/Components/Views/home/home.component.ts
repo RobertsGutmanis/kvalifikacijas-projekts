@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private productService: ProductService) {
   }
 
+  //Iegūst 4 jaunākos produktus, kurus izvadīt lietotājam
   ngOnInit(): void {
     this.productService.getProducts().subscribe({
       next: (response: any): void => {
@@ -33,10 +34,14 @@ export class HomeComponent implements OnInit {
     })
   }
 
+
+  //Aizved lietotāju uz produkta skatu
   onGoToProduct(id: number): void {
     this.router.navigate(['product', id])
   }
 
+
+  //Pievieno konkrēto produktu grozam
   addToCart(id: number): void {
     this.productService.addToCart(id)
   }

@@ -23,11 +23,13 @@ export class SearchComponent implements OnInit {
   manufacturerFilter: string[] = [];
   currentPriceRange: number = 100;
 
+  //Iegūst meklējamo vērtību no URL
   constructor(private activeRoute: ActivatedRoute, private productService: ProductService, private router: Router) {
     this.searchParam = this.activeRoute.snapshot.params['value']
     console.log(this.searchParam)
   }
 
+  //Iegūst produktus no servera pēc meklējamās vērtības un saglabā mainīgajos
   ngOnInit(): void {
     this.productService.searchForProduct(this.searchParam).subscribe({
       next: (response: any): void => {
@@ -45,10 +47,13 @@ export class SearchComponent implements OnInit {
     })
   }
 
+
+  //Noved uz produkta skatu
   onGoToProduct(id: number): void {
     this.router.navigate(['product', id])
   }
 
+  //Filtrē produktus pēc to ražotāja
   filterManufacturer(manufacturer: string): void {
     if (this.manufacturerFilter.includes(manufacturer)) {
       let index: number = this.manufacturerFilter.indexOf(manufacturer);
@@ -73,15 +78,18 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  //Pievieno produktu grozam
   addToCart(id: number): void {
     this.productService.addToCart(id)
   }
 
+  //Izvada produktus pēc cenu diapazona
   onPriceChange(value: any): void {
     this.currentPriceRange = +value;
     this.products = this.immutableProducts.filter((product: Product): boolean => product.price >= +value)
   }
 
+  //Izvada produktus pēc klienta filtra
   onSortChange(sort: string): void {
     if (sort === "new") {
       this.products = this.immutableProducts.filter((data: any): boolean => true)
@@ -93,10 +101,12 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  //Sakārto masīvu pēc price vērtības no zemākās uz augstāko
   sortPriceLow(a: any, b: any): number {
     return a.price - b.price;
   }
 
+  //Sakārto masīvu pēc price vērtības no augstākās uz zemāko
   sortPriceHigh(a: any, b: any): number {
     return b.price - a.price;
   }

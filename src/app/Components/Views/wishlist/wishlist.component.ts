@@ -26,6 +26,7 @@ export class WishlistComponent implements OnInit {
     this.getWishlistItems()
   }
 
+  //Iegūst vēlmju saraksta produktus no servera
   getWishlistItems(): void {
     this.productService.getWishlistItems(localStorage.getItem("wishlist_items_id") ?? "").subscribe({
       next: (response: any): void => {
@@ -37,14 +38,20 @@ export class WishlistComponent implements OnInit {
     })
   }
 
+
+  //Novirza uz produkta skatu
   onGoToProduct(id: number): void {
     this.router.navigate(['product', id])
   }
 
+
+  //Pievieno produktu grozam
   addToCart(id: number): void {
     this.productService.addToCart(id)
   }
 
+
+  //Noņem produktu no vēlmju saraksta
   removeFromWishlist(id: number): void {
     this.productService.removeFromWishlist(id)
     this.getWishlistItems()

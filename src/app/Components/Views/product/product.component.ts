@@ -17,6 +17,7 @@ export class ProductComponent implements OnInit {
   product!: Product;
   specifications: Specifications[] = []
 
+  //Iegūst produkta ID no URL
   constructor(private productService: ProductService, private activeRoute: ActivatedRoute, private router: Router) {
     this.productId = this.activeRoute.snapshot.params['id']
     if (this.productId === 0 || isNaN(this.productId)) {
@@ -24,6 +25,7 @@ export class ProductComponent implements OnInit {
     }
   }
 
+  //Iegūst produktu no servera un saglabā to mainīgajā
   ngOnInit(): void {
     this.productService.getOneProduct(this.productId).subscribe({
       next: (response: any): void => {
@@ -36,6 +38,7 @@ export class ProductComponent implements OnInit {
     })
   }
 
+  //Pievieno produktu vēlmju sarakstam
   onAddToWishlist(id: number): void {
     this.productService.addToWishlist(id)
   }

@@ -10,6 +10,9 @@ export class TitlePipe implements PipeTransform {
     if (value === "CPU") {
       return "Processors"
     }
+    if(value === "GPU"){
+      return "Video Cards"
+    }
     return value
   }
 

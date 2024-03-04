@@ -9,20 +9,24 @@ import {Register} from "../Interfaces/register.interface";
   providedIn: 'root'
 })
 export class AuthService {
+  url: string = `http://localhost:8000/api`
 
   constructor(private http: HttpClient) {
   }
 
+  //Nosūta login datus uz serveri
   loginUser(data: Login): Observable<any> {
-    return this.http.post('http://127.0.0.1:8000/api/login', data)
+    return this.http.post(`${this.url}/login`, data)
   }
 
+  //Nosūta register datus uz serveri
   registerUser(data: Register): Observable<any> {
-    return this.http.post('http://127.0.0.1:8000/api/register', data)
+    return this.http.post(`${this.url}/register`, data)
   }
 
+  //Iegūst lietotāja datus no servera
   getUser(): Observable<any> {
-    return this.http.get('http://127.0.0.1:8000/api/user', {
+    return this.http.get(`${this.url}/user`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${localStorage.getItem("token") ?? ""}`
       }),
@@ -30,7 +34,7 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post(`http://127.0.0.1:8000/api/logout`, {}, {
+    return this.http.post(`${this.url}/logout`, {}, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${localStorage.getItem("token") ?? ""}`
       }),

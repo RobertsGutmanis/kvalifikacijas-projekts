@@ -17,9 +17,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     initFlowbite();
-
-    setTimeout((): void => {
-      // console.clear()
-    }, 1000)
   }
 }

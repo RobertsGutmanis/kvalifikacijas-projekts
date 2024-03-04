@@ -21,9 +21,11 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {
   }
 
+
+  //Izveido formas grupu
   ngOnInit(): void {
     this.formGroup = new FormGroup({
-      "email": new FormControl("", Validators.required),
+      "email": new FormControl("", [Validators.required, Validators.email]),
       "password": new FormControl("", Validators.required),
       "password_confirmation": new FormControl("", Validators.required),
       "name": new FormControl("", Validators.required),
@@ -32,6 +34,8 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+
+  //Apstrādā formu un nosūta tās datus serverim
   onSubmit(): void {
     if (this.formGroup.status === "VALID") {
       this.authService.registerUser(this.formGroup.value).subscribe({

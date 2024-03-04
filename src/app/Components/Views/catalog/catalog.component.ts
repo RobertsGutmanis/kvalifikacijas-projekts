@@ -27,6 +27,7 @@ export class CatalogComponent implements OnInit {
   constructor(private activeRoute: ActivatedRoute, private productService: ProductService, private router: Router) {
   }
 
+  //Iegūst visus kataloga produktus un saglabā tos mainīgajos, aprēķina augstako cenu un nosaka visus ražotājus kādi ir produktiem
   ngOnInit(): void {
     this.parameter = this.activeRoute.snapshot.paramMap.get('category') ?? "";
     this.productService.getCategoryProducts(this.parameter).subscribe({
@@ -48,10 +49,12 @@ export class CatalogComponent implements OnInit {
     })
   }
 
+  //Novada lietotāju uz konkrēto produktu
   onGoToProduct(id: number): void {
     this.router.navigate(['product', id])
   }
 
+  //Filtrē kādi produkti tiks izvadīti pēc tā ražotāja
   filterManufacturer(manufacturer: string): void {
     if (this.manufacturerFilter.includes(manufacturer)) {
       let index: number = this.manufacturerFilter.indexOf(manufacturer);
@@ -76,15 +79,19 @@ export class CatalogComponent implements OnInit {
     }
   }
 
+
+  //Pievieno produktu grozam
   addToCart(id: number): void {
     this.productService.addToCart(id)
   }
 
+  //Izvada produktus cenu kategorijā pēc klienta izveles
   onPriceChange(value: any): void {
     this.currentPriceRange = +value;
     this.products = this.immutableProducts.filter((product: Product): boolean => product.price >= +value)
   }
 
+  //Sakārto produktus pēc klienta izvēles
   onSortChange(sort: string): void {
     if (sort === "new") {
       this.products = this.immutableProducts.filter((data: any): boolean => true)
@@ -96,10 +103,12 @@ export class CatalogComponent implements OnInit {
     }
   }
 
+  //Sakārto masīvu pēc price vērtības no zemākās uz augstāko
   sortPriceLow(a: any, b: any): number {
     return a.price - b.price;
   }
 
+  //Sakārto masīvu pēc price vērtības no augstākās uz zemāko
   sortPriceHigh(a: any, b: any): number {
     return b.price - a.price;
   }

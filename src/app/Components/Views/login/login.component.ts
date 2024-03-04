@@ -20,13 +20,17 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {
   }
 
+
+  //Izveido formas grupu
   ngOnInit(): void {
     this.formGroup = new FormGroup({
-      "email": new FormControl("", [Validators.required]),
+      "email": new FormControl("", [Validators.required, Validators.email]),
       "password": new FormControl("", Validators.required)
     })
   }
 
+
+  //Apstrādā formas datus un nosūta serverim, saglabā žetonu localStorage
   onSubmit(): void {
     if (this.formGroup.status === "VALID") {
       this.authService.loginUser(this.formGroup.value).subscribe({
@@ -39,7 +43,7 @@ export class LoginComponent implements OnInit {
         }
       })
     } else {
-      this.error = "Lauki nav aizpildīti"
+      this.error = "Please fill out the fields"
     }
   }
 }
