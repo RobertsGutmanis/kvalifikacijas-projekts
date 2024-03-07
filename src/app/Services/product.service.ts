@@ -9,7 +9,7 @@ export class ProductService {
   cartItemCount: Map<number, number> = new Map();
   cartItemArr: number[] = [];
   wishlistItemArr: any[] = [];
-  url: string = `http://127.0.0.1:8000/api`
+  url: string = `http://api.rgutmanis.com/api`
 
   //Uz projekta sākumu pārbauda, vai localStorage eksistē "wishlist_items_id" un "cart_items_id", un ja eksistē, tad to vērtības ieliek mainīgajos
   constructor(private http: HttpClient) {
