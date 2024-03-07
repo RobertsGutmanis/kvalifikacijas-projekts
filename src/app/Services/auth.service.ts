@@ -9,7 +9,7 @@ import {Register} from "../Interfaces/register.interface";
   providedIn: 'root'
 })
 export class AuthService {
-  url: string = `http://api.rgutmanis.com/api`
+  url: string = `http://13.60.15.51/api`
 
   constructor(private http: HttpClient) {
   }
