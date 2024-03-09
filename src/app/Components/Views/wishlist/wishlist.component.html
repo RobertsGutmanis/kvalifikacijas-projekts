@@ -17,13 +17,14 @@
               </a>
               <div class="flex flex-col items-start justify-between flex-wrap gap-2">
                 <span (click)="onGoToProduct(product.id)"
-                      class="text-3xl font-bold dark:text-white text-red-600">${{ product.price }}</span>
-                <div class="flex justify-between w-full">
+                      class="text-3xl font-bold dark:text-white text-red-600">${{ product.price }}
+                </span>
+                <div class="flex justify-between w-full flex-wrap gap-3">
                   <a (click)="addToCart(product.id)"
-                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center 0">Add
+                     class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add
                     to cart</a>
                   <a (click)="removeFromWishlist(product.id)"
-                     class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Remove</a>
+                     class="w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Remove</a>
                 </div>
               </div>
             </div>
@@ -31,8 +32,8 @@
         }
       </div>
     } @else {
-      <div class="w-full col-span-full h-[60vh] flex items-center justify-center flex-col">
-        <h1 class="text-3xl">You have not wishlisted any products yet</h1>
+      <div class="w-full col-span-full h-[60vh] flex items-center justify-center flex-col text-center">
+        <h1 class="text-3xl text-center">You have not wishlisted any products yet</h1>
         <a class="cursor-pointer text-blue-800 font-bold" routerLink="/">Go back</a>
       </div>
     }
