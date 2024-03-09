@@ -22,7 +22,9 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCartItems()
+    if(localStorage.getItem("cart_items_id")){
+      this.getCartItems()
+    }
   }
 
   //Iegūst visas groza preces, saglabā tās maibīgajā un aprēķina groza kopējo summu
