@@ -22,6 +22,7 @@ export class WishlistComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("test")
     if (!localStorage.getItem("wishlist_items_id")) return
     this.getWishlistItems()
   }
