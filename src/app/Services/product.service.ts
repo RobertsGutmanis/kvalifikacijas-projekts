@@ -76,11 +76,7 @@ export class ProductService {
 
   //Iegūst vēlmju saraksta produktus no servera pēc ID
   getWishlistItems(ids: string): Observable<any> {
-    return this.http.get(`${this.url}/wishlist`, {
-      headers: {
-        "wishlist_ids": ids
-      }
-    })
+    return this.http.post(`${this.url}/wishlist`, `[${ids}]`)
   }
 
   //Noņem produktu no vēlmju saraksta
