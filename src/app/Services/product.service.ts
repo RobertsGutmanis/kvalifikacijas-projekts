@@ -9,8 +9,8 @@ export class ProductService {
   cartItemCount: Map<number, number> = new Map();
   cartItemArr: number[] = [];
   wishlistItemArr: any[] = [];
-  url: string = `https://api.rgutmanis.com/api`
-  // url: string = `http://localhost:8000/api`
+  // url: string = `https://api.rgutmanis.com/api`
+  url: string = `http://localhost:8000/api`
 
   //Uz projekta sākumu pārbauda, vai localStorage eksistē "wishlist_items_id" un "cart_items_id", un ja eksistē, tad to vērtības ieliek mainīgajos
   constructor(private http: HttpClient) {
@@ -77,7 +77,7 @@ export class ProductService {
   //Iegūst vēlmju saraksta produktus no servera pēc ID
   getWishlistItems(ids: string): Observable<any> {
     console.log(ids)
-    return this.http.post(`${this.url}/wishlist`, {products: `[${ids}]`})
+    return this.http.post(`${this.url}/wishlist`, {products: `${ids}`})
   }
 
   //Noņem produktu no vēlmju saraksta
