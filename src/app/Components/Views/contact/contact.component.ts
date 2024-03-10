@@ -12,7 +12,7 @@ import {NgClass} from "@angular/common";
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
-export class ContactComponent implements OnInit{
+export class ContactComponent implements OnInit {
   formGroup!: FormGroup;
   errorMessage: string = "none";
   emailError: boolean = false;
@@ -21,7 +21,7 @@ export class ContactComponent implements OnInit{
   messageError: boolean = false;
 
   //Izveido formas grupu apstrādei
-  ngOnInit() : void{
+  ngOnInit(): void {
     this.formGroup = new FormGroup({
       "email": new FormControl('', [Validators.required, Validators.email]),
       "name": new FormControl('', Validators.required),
@@ -31,8 +31,8 @@ export class ContactComponent implements OnInit{
   }
 
   //Pārbauda vai formā ir kļūdas un tās datus nosūta tālāk
-  onSubmit(): void{
-    if(this.formGroup.status === "INVALID"){
+  onSubmit(): void {
+    if (this.formGroup.status === "INVALID") {
       this.errorMessage = "Incorrect fields!";
 
       this.formGroup.controls["email"].errors ? this.emailError = true : this.emailError = false;
@@ -40,7 +40,7 @@ export class ContactComponent implements OnInit{
       this.formGroup.controls["topic"].errors ? this.topicError = true : this.topicError = false
       this.formGroup.controls["message"].errors ? this.messageError = true : this.messageError = false
       return
-    }else{
+    } else {
       this.emailError = false;
       this.nameError = false;
       this.topicError = false;

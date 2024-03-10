@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
 
   //Novirza lietotāju uz meklēšanas skatu, pēc meklēšanas formas iesniegšanas
   onSubmit(): void {
-    if(this.formGroup.status==="INVALID") return
+    if (this.formGroup.status === "INVALID") return
     this.router.navigate(["/search", this.formGroup.value.search]).then((): void => {
       window.location.reload();
     });

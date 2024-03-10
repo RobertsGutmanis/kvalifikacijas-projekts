@@ -1,7 +1,7 @@
 <div class="container mx-auto flex w-full  justify-center content-center my-8 flex-col min-h-[60vh]">
   <h1 class="font-bold text-2xl text-center">Your wishlist</h1>
   <div class="w-full gap-2 p-2">
-    @if (products.length > 0) {
+    @if (products.length > 0 && errorMessage === "none") {
       <div class="max-w-[80vw] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  mx-auto gap-4">
         @for (product of products; track product.id) {
           <div
@@ -31,10 +31,15 @@
           </div>
         }
       </div>
-    } @else {
+    } @else if (products.length === 0 && errorMessage === "none") {
       <div class="w-full col-span-full h-[60vh] flex items-center justify-center flex-col text-center">
         <h1 class="text-3xl text-center">You have not wishlisted any products yet</h1>
         <a class="cursor-pointer text-blue-800 font-bold" routerLink="/">Go back</a>
+      </div>
+    } @else {
+      <div class="w-full col-span-full h-[60vh] flex items-center justify-center flex-col text-center">
+        <h1 class="text-3xl text-center">You need to authenticate first to use the wishlist!</h1>
+        <a class="cursor-pointer text-blue-800 font-bold" routerLink="/login">Login</a>
       </div>
     }
   </div>

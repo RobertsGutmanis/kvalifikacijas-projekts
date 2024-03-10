@@ -22,7 +22,7 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem("cart_items_id")){
+    if (localStorage.getItem("cart_items_id")) {
       this.getCartItems()
     }
   }
@@ -63,17 +63,16 @@ export class CartComponent implements OnInit {
   onChangeCount(count: string, id: number): void {
     this.totalPrice = 0;
     const idsArr: number[] = JSON.parse(localStorage.getItem("cart_items_id") ?? "")
-    const idCount: number = idsArr.filter((id_num: number) : boolean => id_num === id).length
+    const idCount: number = idsArr.filter((id_num: number): boolean => id_num === id).length
 
-    if(idCount < +count){
+    if (idCount < +count) {
       const difference: number = +count - idCount
-      for(let i: number = 0; i < difference; i++){
+      for (let i: number = 0; i < difference; i++) {
         idsArr.push(id)
       }
-    }
-    else if(idCount > +count){
+    } else if (idCount > +count) {
       const difference: number = (+count - idCount) * -1
-      for(let i: number = 0; i < difference; i++){
+      for (let i: number = 0; i < difference; i++) {
         let currentIndex: number = idsArr.indexOf(id)
         idsArr.splice(currentIndex, 1)
       }
@@ -83,11 +82,11 @@ export class CartComponent implements OnInit {
   }
 
   //Kalkulē produktu cenas un groza kopējo cenu
-  changePrices(id: number): void{
+  changePrices(id: number): void {
     const idsArr: number[] = JSON.parse(localStorage.getItem("cart_items_id") ?? "")
-    this.cartItems.forEach((item: Product): void=>{
-      if(item.id === id){
-        item.count = idsArr.filter((id_num: number) : boolean => id_num === id).length
+    this.cartItems.forEach((item: Product): void => {
+      if (item.id === id) {
+        item.count = idsArr.filter((id_num: number): boolean => id_num === id).length
         item.totalPrice = item.price * item.count
       }
       this.totalPrice = this.totalPrice + (item.totalPrice ?? 0);

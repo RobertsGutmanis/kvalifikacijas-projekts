@@ -11,6 +11,8 @@ import {Register} from "../Interfaces/register.interface";
 export class AuthService {
   url: string = `https://api.rgutmanis.com/api`
 
+  // url: string = `http://localhost:8000/api`
+
   constructor(private http: HttpClient) {
   }
 

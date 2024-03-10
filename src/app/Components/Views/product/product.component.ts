@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Product} from "../../../Interfaces/product.interface";
 import {Specifications} from "../../../Interfaces/specifications.interface";
+import {WishlistService} from "../../../Services/wishlist.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-product',
@@ -18,7 +20,7 @@ export class ProductComponent implements OnInit {
   specifications: Specifications[] = []
 
   //Iegūst produkta ID no URL
-  constructor(private productService: ProductService, private activeRoute: ActivatedRoute, private router: Router) {
+  constructor(private productService: ProductService, private activeRoute: ActivatedRoute, private router: Router, private wishlistService: WishlistService, private toastr: ToastrService) {
     this.productId = this.activeRoute.snapshot.params['id']
     if (this.productId === 0 || isNaN(this.productId)) {
       this.router.navigate(['/'])
@@ -38,8 +40,21 @@ export class ProductComponent implements OnInit {
     })
   }
 
+  //Pievieno produktu grozam
+  onAddToCart(id: number): void {
+    this.toastr.success('Cart', 'Product added to cart!');
+    this.productService.addToCart(id)
+  }
+
   //Pievieno produktu vēlmju sarakstam
   onAddToWishlist(id: number): void {
-    this.productService.addToWishlist(id)
+    this.wishlistService.addToWishlist(id).subscribe({
+      next: (response: any): void => {
+      },
+      error: (error: HttpErrorResponse): void => {
+        this.toastr.error('Cart', 'There was an error adding product to the wishlist!');
+        console.log(error)
+      }
+    });
   }
 }
