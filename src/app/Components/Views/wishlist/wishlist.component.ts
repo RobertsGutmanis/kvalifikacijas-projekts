@@ -34,6 +34,7 @@ export class WishlistComponent implements OnInit {
 
   //Iegūst vēlmju saraksta produktus no servera
   getWishlistItems(): void {
+    if(!localStorage.getItem("wishlist_items_id")) return;
     this.wishlistService.getWishlistItems(localStorage.getItem("wishlist_items_id") ?? "").subscribe({
       next: (response: any): void => {
         this.errorMessage = "none"
