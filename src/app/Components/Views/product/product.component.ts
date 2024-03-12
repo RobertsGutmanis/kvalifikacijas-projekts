@@ -42,7 +42,6 @@ export class ProductComponent implements OnInit {
 
   //Pievieno produktu grozam
   onAddToCart(id: number): void {
-    this.toastr.success('Cart', 'Product added to cart!');
     this.productService.addToCart(id)
   }
 
