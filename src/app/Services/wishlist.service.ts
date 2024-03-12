@@ -17,7 +17,11 @@ export class WishlistService {
 
   //Pievieno produktu vēlmju sarakstam un saglabā localStorage
   addToWishlist(id: number): any {
-    this.wishlistItemArr = JSON.parse(localStorage.getItem("wishlist_items_id") ?? "")
+    if(localStorage.getItem("wishlist_items_id")){
+      this.wishlistItemArr = JSON.parse(localStorage.getItem("wishlist_items_id") ?? "")
+    }else{
+      this.wishlistItemArr = []
+    }
     if (!this.wishlistItemArr.includes(id)) {
       this.wishlistItemArr.push(id)
       localStorage.setItem("wishlist_items_id", JSON.stringify(this.wishlistItemArr));
