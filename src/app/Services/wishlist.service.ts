@@ -3,14 +3,17 @@ import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ToastrService} from "ngx-toastr";
 
+class EmptyObservable {
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class WishlistService {
   wishlistItemArr: number[] = [];
-  url: string = `https://api.rgutmanis.com/api`
+  // url: string = `https://api.rgutmanis.com/api`
+  url: string = `http://localhost:8000/api`
 
-  // url: string = `http://localhost:8000/api`
   constructor(private http: HttpClient, private toastr: ToastrService) {
   }
 
@@ -33,12 +36,13 @@ export class WishlistService {
       })
     } else {
       this.toastr.info("Product already in wishlist!")
+      return new EmptyObservable();
     }
   }
 
   //Iegūst vēlmju saraksta produktus no servera pēc ID
-  getWishlistItems(ids: string): Observable<any> {
-    return this.http.post(`${this.url}/wishlist/get`, {products: `${ids}`}, {
+  getWishlistItems(): Observable<any> {
+    return this.http.get(`${this.url}/wishlist`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${localStorage.getItem("token") ?? ""}`
       }),
@@ -56,5 +60,9 @@ export class WishlistService {
         Authorization: `Bearer ${localStorage.getItem("token") ?? ""}`
       }),
     })
+  }
+
+  getWishlistItemsFromUser(): any{
+
   }
 }

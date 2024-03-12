@@ -28,15 +28,15 @@ export class WishlistComponent implements OnInit {
       this.errorMessage = "403"
       return
     }
-    if (!localStorage.getItem("wishlist_items_id")) return
+    // if (!localStorage.getItem("wishlist_items_id")) return
     this.getWishlistItems()
   }
 
   //Iegūst vēlmju saraksta produktus no servera
   getWishlistItems(): void {
-    if(!localStorage.getItem("wishlist_items_id")) return;
-    this.wishlistService.getWishlistItems(localStorage.getItem("wishlist_items_id") ?? "").subscribe({
+    this.wishlistService.getWishlistItems().subscribe({
       next: (response: any): void => {
+        console.log(response)
         this.errorMessage = "none"
         this.products = response.data
       },

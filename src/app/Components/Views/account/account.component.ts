@@ -16,7 +16,7 @@ export class AccountComponent implements OnInit {
   userData!: UserData;
 
   constructor(private authService: AuthService, private router: Router) {
-
+    // if(!localStorage.getItem("token")) this.router.navigate(["/login"]);
   }
 
   //Iegūst lietotāja datus no servera un saglabā tos mainīgajā
@@ -26,7 +26,7 @@ export class AccountComponent implements OnInit {
         this.userData = response.data;
       },
       error: (error: HttpErrorResponse): void => {
-        console.log(error)
+        // this.router.navigate(["/login"])
       }
     })
   }

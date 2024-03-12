@@ -100,7 +100,7 @@
                 </select>
               </td>
               <td class="sm:px-6 py-4 text-xl">
-                ${{ item.totalPrice }}
+                ${{ item.totalPrice?.toFixed(2) }}
               </td>
               <td class="px-6 py-4 text-right w-full sm:w-fit">
                 <button (click)="removeFromCart(item.id)" type="button"
@@ -114,7 +114,7 @@
       </table>
       <div class="cart-footer flex justify-between mt-4">
         <p class="text-3xl">
-          Total: <span>${{ totalPrice }}</span>
+          Total: <span>${{ totalPrice.toFixed(2) }}</span>
         </p>
         <button
           class="px-6 py-3.5 text-base font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

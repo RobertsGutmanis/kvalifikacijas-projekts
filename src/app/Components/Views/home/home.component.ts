@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   //Iegūst 4 jaunākos produktus, kurus izvadīt lietotājam
   ngOnInit(): void {
-    this.productService.getProducts().subscribe({
+    this.productService.getProducts()?.subscribe({
       next: (response: any): void => {
         this.products = response.data.slice(0, 4);
       },

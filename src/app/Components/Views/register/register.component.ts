@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../../Services/auth.service";
+import {compareSegments} from "@angular/compiler-cli/src/ngtsc/sourcemaps/src/segment_marker";
 
 @Component({
   selector: 'app-register',
@@ -44,6 +45,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(["/account"])
         },
         error: (error: any): void => {
+          console.log(error)
           this.error = error.error.message
         }
       })

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../../Services/auth.service";
+import {WishlistService} from "../../../Services/wishlist.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
   formGroup!: FormGroup;
   error: string = "none";
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private wishlistService: WishlistService, private toastr: ToastrService) {
   }
 
 
@@ -36,7 +38,14 @@ export class LoginComponent implements OnInit {
       this.authService.loginUser(this.formGroup.value).subscribe({
         next: (response: any): void => {
           localStorage.setItem("token", response.token)
-          this.router.navigate(["/account"])
+          this.wishlistService.getWishlistItems().subscribe({
+            next: (): void=>{
+              this.router.navigate(["/account"])
+            },
+            error: (): void=>{
+
+            }
+          })
         },
         error: (error: any): void => {
           this.error = error.error.message
