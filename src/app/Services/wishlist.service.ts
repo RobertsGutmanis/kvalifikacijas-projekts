@@ -11,8 +11,8 @@ class EmptyObservable {
 })
 export class WishlistService {
   wishlistItemArr: number[] = [];
-  // url: string = `https://api.rgutmanis.com/api`
-  url: string = `http://localhost:8000/api`
+  url: string = `https://api.rgutmanis.com/api`
+  // url: string = `http://localhost:8000/api`
 
   constructor(private http: HttpClient, private toastr: ToastrService) {
   }
