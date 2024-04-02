@@ -2,12 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../Services/auth.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {UserData} from "../../../Interfaces/user_data.interface";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss'
 })
@@ -26,7 +28,7 @@ export class AccountComponent implements OnInit {
         this.userData = response.data;
       },
       error: (error: HttpErrorResponse): void => {
-        // this.router.navigate(["/login"])
+        this.router.navigate(["/login"])
       }
     })
   }

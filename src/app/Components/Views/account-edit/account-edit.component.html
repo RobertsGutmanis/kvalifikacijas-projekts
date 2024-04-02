@@ -1,0 +1,47 @@
+<div class="w-full my-12 flex justify-center items-center flex-col">
+  <form (ngSubmit)="onSubmit()" [formGroup]="formGroup" class="container sm:max-w-lg bg-white p-12 rounded-md flex flex-col">
+    <h1 class="font-bold text-center">Edit your account details!</h1>
+      <div class="flex justify-between">
+        <div class="flex flex-col">
+          <div class="mb-5">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+            <input formControlName="name" type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  required />
+          </div>
+          <div class="mb-5">
+            <label for="middle_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Middle Name</label>
+            <input formControlName="middle_name" type="text" id="middle_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+          </div>
+          <div class="mb-5">
+            <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+            <input formControlName="last_name" type="text" id="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+          </div>
+          <div class="mb-5">
+            <label for="phone_num" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
+            <input formControlName="phone_num" type="text" id="phone_num" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <div class="mb-5">
+            <label for="country" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
+            <input formControlName="country" type="text" id="country" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+          </div>
+          <div class="mb-5">
+            <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
+            <input formControlName="city" type="text" id="city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+          </div>
+          <div class="mb-5">
+            <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+            <input formControlName="address" type="text" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+          </div>
+          <div class="mb-5">
+            <label for="zip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Zip</label>
+            <input formControlName="zip" type="text" id="zip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+    @if(errorMessage!=="none"){
+      <p class="text-red-700 font-bold">{{errorMessage}}</p>
+    }
+  </form>
+</div>

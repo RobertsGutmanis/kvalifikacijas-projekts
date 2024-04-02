@@ -10,6 +10,7 @@ import {SearchComponent} from "./Components/Views/search/search.component";
 import {WishlistComponent} from "./Components/Views/wishlist/wishlist.component";
 import {CategoriesComponent} from "./Components/Views/categories/categories.component";
 import {ContactComponent} from "./Components/Views/contact/contact.component";
+import {AccountEditComponent} from "./Components/Views/account-edit/account-edit.component";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,5 +23,6 @@ export const routes: Routes = [
   {path: 'search/:value', component: SearchComponent},
   {path: 'wishlist', component: WishlistComponent},
   {path: 'categories', component: CategoriesComponent},
-  {path: 'contact', component: ContactComponent}
+  {path: 'contact', component: ContactComponent},
+  {path: 'account/edit', component: AccountEditComponent}
 ];

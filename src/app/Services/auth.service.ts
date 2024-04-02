@@ -9,8 +9,8 @@ import {Register} from "../Interfaces/register.interface";
   providedIn: 'root'
 })
 export class AuthService {
-  url: string = `https://api.rgutmanis.com/api`
-  // url: string = `http://localhost:8000/api`
+  // url: string = `https://api.rgutmanis.com/api`
+  url: string = `http://localhost:8000/api`
 
   constructor(private http: HttpClient) {
   }
@@ -42,5 +42,11 @@ export class AuthService {
     })
   }
 
-
+  updateUser(userData: any): Observable<any>{
+    return this.http.patch(`${this.url}/user`,  userData, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${localStorage.getItem("token") ?? ""}`
+      }
+    )}
+  )}
 }
