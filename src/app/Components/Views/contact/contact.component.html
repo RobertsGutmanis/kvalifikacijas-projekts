@@ -1,25 +1,25 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="formGroup" class="max-w-sm mx-auto my-6 min-h-[60vh] flex flex-col gap-6">
-  <h1 class="w-full text-2xl font-bold text-center">Contact Us!</h1>
+  <h1 class="w-full text-2xl font-bold text-center">Sazinaties!</h1>
   <div class="">
-    <label class="block mb-2 text-sm font-medium text-gray-900" for="email">Your email</label>
+    <label class="block mb-2 text-sm font-medium text-gray-900" for="email">E-pastsl</label>
     <input [ngClass]="{'input-error': emailError}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" formControlName="email" id="email"
            required
            type="email"/>
   </div>
   <div class="">
-    <label class="block mb-2 text-sm font-medium text-gray-900" for="name">Your name</label>
+    <label class="block mb-2 text-sm font-medium text-gray-900" for="name">Pilnais vārds</label>
     <input [ngClass]="{'input-error': nameError}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" formControlName="name" id="name"
            required
            type="text"/>
   </div>
   <div class="">
-    <label class="block mb-2 text-sm font-medium text-gray-900 " for="topic">Topic</label>
+    <label class="block mb-2 text-sm font-medium text-gray-900 " for="topic">Temats</label>
     <input [ngClass]="{'input-error': topicError}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" formControlName="topic" id="topic"
            required
            type="text"/>
   </div>
   <div class="">
-    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="message">Your message</label>
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="message">Jūsu ziņa</label>
     <textarea [ngClass]="{'input-error': messageError}" class="min-h-[100px] block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" formControlName="message" id="message"
               placeholder="Your message..."
               rows="4"></textarea>
@@ -29,6 +29,6 @@
   }
   <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           type="submit">
-    Send
+    Nosūtīt!
   </button>
 </form>

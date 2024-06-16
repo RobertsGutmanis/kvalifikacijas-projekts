@@ -24,8 +24,8 @@
                   d="M18 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM6.5 3a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.014 13.021l.157-.625A3.427 3.427 0 0 1 6.5 9.571a3.426 3.426 0 0 1 3.322 2.805l.159.622-6.967.023ZM16 12h-3a1 1 0 0 1 0-2h3a1 1 0 0 1 0 2Zm0-3h-3a1 1 0 1 1 0-2h3a1 1 0 1 1 0 2Zm0-3h-3a1 1 0 1 1 0-2h3a1 1 0 1 1 0 2Z"/>
             </svg>
         </span>
-        <h3 class="font-medium leading-tight">Shipping Info</h3>
-        <p class="text-sm">Fill Out Shipping Form</p>
+        <h3 class="font-medium leading-tight">Piegādes informācija</h3>
+        <p class="text-sm">Aizpildīt piegādes formu</p>
       </li>
       <li class="mb-10 ms-6">
         <span
@@ -36,8 +36,8 @@
                   d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
             </svg>
         </span>
-        <h3 class="font-medium leading-tight">Payment</h3>
-        <p class="text-sm">Pay for the goods</p>
+        <h3 class="font-medium leading-tight">Apmaksa</h3>
+        <p class="text-sm">Apmaksāt par sūtījumu</p>
       </li>
       <li class="ms-6">
         <span
@@ -48,8 +48,8 @@
                   d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2ZM7 2h4v3H7V2Zm5.7 8.289-3.975 3.857a1 1 0 0 1-1.393 0L5.3 12.182a1.002 1.002 0 1 1 1.4-1.436l1.328 1.289 3.28-3.181a1 1 0 1 1 1.392 1.435Z"/>
             </svg>
         </span>
-        <h3 class="font-medium leading-tight">Approval</h3>
-        <p class="text-sm">Await for your package</p>
+        <h3 class="font-medium leading-tight">Apsiprināšana</h3>
+        <p class="text-sm">Sagaidiet pasūtījumu</p>
       </li>
     </ol>
 
@@ -58,24 +58,24 @@
         class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 shadow-md sm:rounded-lg flex sm:table flex-wrap">
         <caption
           class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800 w-full">
-          Your products
+          Jūsu produkti
         </caption>
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr class="hidden sm:table-row">
           <th class="px-6 py-3" scope="col">
-            Picture
+            Attēls
           </th>
           <th class="px-6 py-3" scope="col">
-            Name
+            Nosaukums
           </th>
           <th class="px-6 py-3" scope="col">
-            Count
+            Skaits
           </th>
           <th class="px-6 py-3" scope="col">
-            Price
+            Cena
           </th>
           <th class="px-6 py-3" scope="col">
-            <span class="sr-only">Remove</span>
+            <span class="sr-only">Noņemt</span>
           </th>
         </tr>
         </thead>
@@ -105,7 +105,7 @@
               <td class="px-6 py-4 text-right w-full sm:w-fit">
                 <button (click)="removeFromCart(item.id)" type="button"
                         class="sm:w-fit focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-full">
-                  Remove
+                  Noņemt
                 </button>
               </td>
             </tr>
@@ -114,12 +114,12 @@
       </table>
       <div class="cart-footer flex justify-between mt-4">
         <p class="text-3xl">
-          Total: <span>${{ totalPrice.toFixed(2) }}</span>
+          Kopā: <span>${{ totalPrice.toFixed(2) }}</span>
         </p>
         <button
           class="px-6 py-3.5 text-base font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           type="button">
-          Next
+          Apmaksa
         </button>
       </div>
     </div>
