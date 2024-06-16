@@ -17,7 +17,7 @@
               </a>
               <div class="flex flex-col items-start justify-between flex-wrap gap-2">
                 <span (click)="onGoToProduct(product.id)"
-                      class="text-3xl font-bold dark:text-white text-red-600">${{ product.price }}
+                      class="text-3xl font-bold dark:text-white text-red-600">{{ product.price }}€
                 </span>
                 <div class="flex justify-between w-full flex-wrap gap-3">
                   <a (click)="addToCart(product.id)"
