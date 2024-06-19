@@ -9,7 +9,7 @@ import {ToastrService} from "ngx-toastr";
 export class ProductService {
   cartItemCount: Map<number, number> = new Map();
   cartItemArr: number[] = [];
-  url: string = `https://api.rgutmanis.com/api`
+  url: string = `https://api2.rgutmanis.com/api`
   // url: string = `http://localhost:8000/api`
 
   //Uz projekta sākumu pārbauda, vai localStorage eksistē "wishlist_items_id" un "cart_items_id", un ja eksistē, tad to vērtības ieliek mainīgajos
