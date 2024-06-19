@@ -49,14 +49,14 @@ export class ProductComponent implements OnInit {
   onAddToWishlist(id: number): void {
 
     if(!localStorage.getItem("token")){
-      this.toastr.error('Authenticate first to add items to wishlist!');
+      this.toastr.error('Vispirms nepieciešams autentificēties!');
       return
     }
     this.wishlistService.addToWishlist(id).subscribe({
       next: (response: any): void => {
       },
       error: (error: HttpErrorResponse): void => {
-        this.toastr.error('There was an error adding product to the wishlist!');
+        this.toastr.error('Radās kļūda pievienojot produktu vēlmju sarakstam!');
       }
     });
   }

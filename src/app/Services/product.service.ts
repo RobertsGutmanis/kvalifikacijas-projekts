@@ -38,7 +38,7 @@ export class ProductService {
   addToCart(id: number): void {
     this.cartItemArr.push(id)
     localStorage.setItem("cart_items_id", JSON.stringify(this.cartItemArr))
-    this.toastr.success("Product added to cart!")
+    this.toastr.success("Produkts pievienots grozam!")
   }
 
   //Iegūst produktu daudzumu grozā
@@ -56,7 +56,7 @@ export class ProductService {
     let cartItems = JSON.parse(localStorage.getItem("cart_items_id") ?? "")
     let filteredArray = cartItems.filter((e: number): boolean => e !== id)
     localStorage.setItem("cart_items_id", JSON.stringify(filteredArray))
-    this.toastr.error("Product removed from cart!")
+    this.toastr.error("Produkts izņemts no groza!")
   }
 
   //Meklē produktu pēc nosaukuma
