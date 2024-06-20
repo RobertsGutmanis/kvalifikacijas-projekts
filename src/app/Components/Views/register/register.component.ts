@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
         }
       })
     } else {
-      this.error = "Authentication error!"
+      this.error = "Servera kļūda! Pārbaudiet ievadlaukus."
     }
   }
 }

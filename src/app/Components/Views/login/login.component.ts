@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         }
       })
     } else {
-      this.error = "Please fill out the fields"
+      this.error = "Lūdzu aizpildiet visus laukus!"
     }
   }
 }

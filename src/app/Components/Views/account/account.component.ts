@@ -46,4 +46,19 @@ export class AccountComponent implements OnInit {
     })
   }
 
+  onDelete(): void{
+    const toDelete: boolean = confirm("Vai tiešām vēlaties dzēst savu kontu?");
+    if(!toDelete) return
+
+    this.authService.deleteUser().subscribe({
+      next: (): void=>{
+        localStorage.clear()
+        this.router.navigate(['/'])
+      },
+      error: (error: HttpErrorResponse): void=>{
+        alert(error.error.message)
+      }
+    })
+  }
+
 }

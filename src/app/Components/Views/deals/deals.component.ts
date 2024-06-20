@@ -1,23 +1,23 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
+import {TitlePipe} from "../../../Pipes/title.pipe";
+import {Product} from "../../../Interfaces/product.interface";
 import {ProductService} from "../../../Services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
-import {Product} from "../../../Interfaces/product.interface";
-import {TitlePipe} from "../../../Pipes/title.pipe";
 
 @Component({
-  selector: 'app-catalog',
+  selector: 'app-deals',
   standalone: true,
   imports: [
     RouterLink,
     TitlePipe
   ],
-  templateUrl: './catalog.component.html',
-  styleUrl: './catalog.component.scss'
+  templateUrl: './deals.component.html',
+  styleUrl: './deals.component.scss'
 })
-export class CatalogComponent implements OnInit {
+export class DealsComponent implements OnInit{
   parameter!: string;
-  immutableProducts!: Product[];
+  immutableProducts: Product[] = [];
   products: Product[] = [];
   manufacturers: string[] = [];
   manufacturerFilter: string[] = [];
@@ -29,17 +29,18 @@ export class CatalogComponent implements OnInit {
 
   //Iegūst visus kataloga produktus un saglabā tos mainīgajos, aprēķina augstako cenu un nosaka visus ražotājus kādi ir produktiem
   ngOnInit(): void {
-    this.parameter = this.activeRoute.snapshot.paramMap.get('category') ?? "";
-    this.productService.getCategoryProducts(this.parameter).subscribe({
-      next: (response: any): void => {
-        this.products = response.data.filter((data: any): boolean => true)
-        this.immutableProducts = response.data.filter((data: any): boolean => true)
-        this.products.forEach((Product: Product): void => {
-          if (Product.price > this.highestPrice) {
-            this.highestPrice = Product.price
-          }
-          if (!this.manufacturers.includes(Product.manufacturer)) {
-            this.manufacturers.push(Product.manufacturer)
+    this.productService.getProducts().subscribe({
+      next: (response: any): void=>{
+        response.data.forEach((el: Product): void=>{
+          if(el.price!=el.last_price){
+            this.immutableProducts.push(el)
+            this.products.push(el)
+            if(el.price > this.highestPrice){
+              this.highestPrice = el.price
+            }
+            if(!this.manufacturers.includes(el.manufacturer)){
+              this.manufacturers.push(el.manufacturer)
+            }
           }
         })
       },
@@ -65,9 +66,7 @@ export class CatalogComponent implements OnInit {
 
 
     if (this.manufacturerFilter.length === 0) {
-      this.products = this.immutableProducts
-        .filter((data: any): boolean => true)
-        .filter((product: Product): boolean => product.price >= this.currentPriceRange);
+      this.products = this.immutableProducts.filter((data: any): boolean => true).filter((product: Product): boolean => product.price >= this.currentPriceRange);
     } else {
       let placeholderArray: Product[] = [];
       this.manufacturerFilter.forEach((filter: string, index: number): void => {
@@ -90,8 +89,16 @@ export class CatalogComponent implements OnInit {
   //Izvada produktus cenu kategorijā pēc klienta izveles
   onPriceChange(value: any): void {
     this.currentPriceRange = +value;
-    this.products = this.immutableProducts.filter((product: Product): boolean => product.price >= +value)
+    if(this.manufacturerFilter.length>0){
+      this.products = this.immutableProducts
+        .filter((product: Product): boolean => product.price >= +value)
+        .filter((product: Product): boolean => this.manufacturerFilter.includes(product.manufacturer));
+    }
+    else {
+      this.products = this.immutableProducts.filter((product: Product): boolean => product.price >= +value)
+    }
   }
+
 
   //Sakārto produktus pēc klienta izvēles
   onSortChange(sort: string): void {

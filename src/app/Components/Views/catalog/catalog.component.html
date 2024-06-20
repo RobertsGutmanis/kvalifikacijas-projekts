@@ -1,5 +1,5 @@
-<div class="container mx-auto flex w-full h-full justify-center content-center my-8 flex-col">
-  <h1 class="font-bold text-2xl text-center">{{ parameter | title }}</h1>
+<div class="container mx-auto flex w-full h-full justify-center content-center my-12 flex-col">
+  <h1 class="font-bold text-3xl text-center">{{ parameter | title }}</h1>
   <div class="w-full flex justify-end mx-auto container p-2">
     <label class="sr-only" for="sort_by">Kārtot pēc:</label>
     <select #sort_by (change)="onSortChange(sort_by.value)"
@@ -17,10 +17,10 @@
       <ul
         class=" w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
         <li class="relative mb-6 p-2">
-          <h1 class="text-xl font-bold">Cenas diapazons: {{ currentPriceRange }}€</h1>
-          <label class="sr-only" for="priceRange">Cenas diapazons</label>
+          <h1 class="text-xl font-bold">Cena sākot no: {{ currentPriceRange }}€</h1>
+          <label class="sr-only" for="priceRange">Cena sākot no:</label>
           <input #priceRange (change)="onPriceChange(priceRange.value)"
-                 class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                 class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                  id="priceRange" max="{{highestPrice}}" min="1"
                  type="range"
                  value="100">
@@ -47,7 +47,7 @@
           <div
             class="flex flex-col justify-between cursor-pointer bg-white border border-gray-200 rounded-lg shadow transition-all">
             <a>
-              <img (click)="onGoToProduct(product.id)" class="p-8 rounded-t-lg aspect-square"
+              <img (click)="onGoToProduct(product.id)" class="p-8 rounded-t-lg aspect-square object-contain"
                    src="{{product.image_url}}" alt="product image"/>
             </a>
             <div class="px-5 pb-5">
@@ -57,7 +57,12 @@
               </a>
               <div class="flex flex-col items-start justify-between flex-wrap gap-2">
                 <span (click)="onGoToProduct(product.id)"
-                      class="text-3xl font-bold dark:text-white text-red-600">{{ product.price }}€</span>
+                      class="text-3xl font-bold dark:text-white text-red-600">{{ product.price }}€
+                  @if(product.price!=product.last_price){
+                    <span class="line-through text-xl text-gray-500">{{product.last_price}}€</span>
+                  }
+
+                </span>
                 <a (click)="addToCart(product.id)"
                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                   Pievienot grozam</a>

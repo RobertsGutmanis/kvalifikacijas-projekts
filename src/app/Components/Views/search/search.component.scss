@@ -1,0 +1,21 @@
+input[type='range'] {
+  overflow: hidden;
+  height: 17px;
+  width: 100%;
+  -webkit-appearance: none;
+  background-color: lightgray;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  color: #1a56db;
+  margin-top: -1px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  width: 15px;
+  -webkit-appearance: none;
+  //cursor: ew-resize;
+  background: #1a56db;
+  box-shadow: -200px 0 0 200px #1a56db;
+}

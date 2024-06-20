@@ -49,4 +49,12 @@ export class AuthService {
       }
     )}
   )}
+
+  deleteUser(): Observable<any>{
+    return this.http.delete(`${this.url}/user`, {
+      headers: new HttpHeaders({
+          Authorization: `Bearer ${localStorage.getItem("token") ?? ""}`
+        }
+      )}
+    )}
 }

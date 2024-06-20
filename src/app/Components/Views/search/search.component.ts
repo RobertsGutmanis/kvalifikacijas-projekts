@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
   products: Product[] = [];
   manufacturers: string[] = [];
   manufacturerFilter: string[] = [];
-  currentPriceRange: number = 100;
+  currentPriceRange: number = 1;
 
   //Iegūst meklējamo vērtību no URL
   constructor(private activeRoute: ActivatedRoute, private productService: ProductService, private router: Router) {
@@ -64,14 +64,14 @@ export class SearchComponent implements OnInit {
 
 
     if (this.manufacturerFilter.length === 0) {
-      this.products = this.immutableProducts.filter((data: any): boolean => true)
+      this.products = this.immutableProducts.filter((data: any): boolean => true).filter((product: Product): boolean => product.price >= this.currentPriceRange);
     } else {
       let placeholderArray: Product[] = [];
       this.manufacturerFilter.forEach((filter: string, index: number): void => {
         let productArray: Product[] = this.immutableProducts.filter((data: any): boolean => true)
           .filter((product: Product): boolean => {
             return product.manufacturer.includes(filter);
-          });
+          }).filter((product: Product): boolean => product.price >= this.currentPriceRange);
         placeholderArray.push(...productArray);
       });
       this.products = placeholderArray;
@@ -91,9 +91,11 @@ export class SearchComponent implements OnInit {
 
   //Izvada produktus pēc klienta filtra
   onSortChange(sort: string): void {
+    console.log(this.manufacturerFilter)
     if (sort === "new") {
       this.products = this.immutableProducts.filter((data: any): boolean => true)
-      console.log(this.immutableProducts)
+        .filter((product: Product): boolean => product.price >= this.currentPriceRange)
+        .filter((product: Product): boolean => this.manufacturerFilter.includes(product.manufacturer));
     } else if (sort === "low") {
       this.products = this.products.sort(this.sortPriceLow)
     } else if (sort === "high") {

@@ -33,9 +33,13 @@ export class ProductComponent implements OnInit {
       next: (response: any): void => {
         this.product = response.product;
         this.specifications = response.specification
+
+        if(!this.product){
+          this.router.navigate(['/'])
+        }
       },
       error: (error: HttpErrorResponse): void => {
-        console.log(error)
+        this.router.navigate(['/'])
       }
     })
   }

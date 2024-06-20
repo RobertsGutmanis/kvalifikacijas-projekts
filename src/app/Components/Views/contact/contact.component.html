@@ -1,7 +1,7 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="formGroup" class="max-w-sm mx-auto my-6 min-h-[60vh] flex flex-col gap-6">
-  <h1 class="w-full text-2xl font-bold text-center">Sazinaties!</h1>
+  <h1 class="w-full text-3xl font-bold text-center">Sazinaties!</h1>
   <div class="">
-    <label class="block mb-2 text-sm font-medium text-gray-900" for="email">E-pastsl</label>
+    <label class="block mb-2 text-sm font-medium text-gray-900" for="email">E-pasts</label>
     <input [ngClass]="{'input-error': emailError}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" formControlName="email" id="email"
            required
            type="email"/>
@@ -21,7 +21,7 @@
   <div class="">
     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="message">Jūsu ziņa</label>
     <textarea [ngClass]="{'input-error': messageError}" class="min-h-[100px] block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" formControlName="message" id="message"
-              placeholder="Your message..."
+              placeholder="Jūsu ziņa..."
               rows="4"></textarea>
   </div>
   @if (errorMessage != "none") {

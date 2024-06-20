@@ -11,6 +11,10 @@ import {WishlistComponent} from "./Components/Views/wishlist/wishlist.component"
 import {CategoriesComponent} from "./Components/Views/categories/categories.component";
 import {ContactComponent} from "./Components/Views/contact/contact.component";
 import {AccountEditComponent} from "./Components/Views/account-edit/account-edit.component";
+import {DealsComponent} from "./Components/Views/deals/deals.component";
+import {AboutComponent} from "./Components/Views/about/about.component";
+import {PrivacyComponent} from "./Components/Views/privacy/privacy.component";
+import {TosComponent} from "./Components/Views/tos/tos.component";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,5 +28,9 @@ export const routes: Routes = [
   {path: 'wishlist', component: WishlistComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'account/edit', component: AccountEditComponent}
+  {path: 'account/edit', component: AccountEditComponent},
+  {path: 'deals', component: DealsComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'privacy-policy', component: PrivacyComponent},
+  {path: 'rules', component: TosComponent},
 ];
