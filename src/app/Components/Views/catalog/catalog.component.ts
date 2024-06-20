@@ -4,13 +4,15 @@ import {ProductService} from "../../../Services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Product} from "../../../Interfaces/product.interface";
 import {TitlePipe} from "../../../Pipes/title.pipe";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
   imports: [
     RouterLink,
-    TitlePipe
+    TitlePipe,
+    NgOptimizedImage
   ],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.scss'

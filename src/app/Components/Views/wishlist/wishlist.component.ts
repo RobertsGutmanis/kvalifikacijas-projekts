@@ -5,13 +5,15 @@ import {Product} from "../../../Interfaces/product.interface";
 import {ProductService} from "../../../Services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {WishlistService} from "../../../Services/wishlist.service";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-wishlist',
   standalone: true,
   imports: [
     RouterLink,
-    TitlePipe
+    TitlePipe,
+    NgOptimizedImage
   ],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.scss'

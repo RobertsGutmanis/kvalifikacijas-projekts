@@ -2,13 +2,15 @@ import {Component} from '@angular/core';
 import {CategoryObject} from "../../../Interfaces/category_object.interface";
 import {RouterLink} from "@angular/router";
 import {ParenthesesPipe} from "../../../Pipes/parentheses.pipe";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-categories',
   standalone: true,
   imports: [
     RouterLink,
-    ParenthesesPipe
+    ParenthesesPipe,
+    NgOptimizedImage
   ],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'

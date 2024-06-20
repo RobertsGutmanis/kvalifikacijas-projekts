@@ -4,13 +4,15 @@ import {TitlePipe} from "../../../Pipes/title.pipe";
 import {Product} from "../../../Interfaces/product.interface";
 import {ProductService} from "../../../Services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-deals',
   standalone: true,
   imports: [
     RouterLink,
-    TitlePipe
+    TitlePipe,
+    NgOptimizedImage
   ],
   templateUrl: './deals.component.html',
   styleUrl: './deals.component.scss'

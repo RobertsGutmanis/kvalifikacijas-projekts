@@ -36,6 +36,10 @@ export class ProductService {
 
   //Pievieno jaunu produktu grozam un saglabā localStorage
   addToCart(id: number): void {
+    if(!localStorage.getItem("token")){
+      this.toastr.error('Vispirms nepieciešams autentificēties!');
+      return
+    }
     this.cartItemArr.push(id)
     localStorage.setItem("cart_items_id", JSON.stringify(this.cartItemArr))
     this.toastr.success("Produkts pievienots grozam!")

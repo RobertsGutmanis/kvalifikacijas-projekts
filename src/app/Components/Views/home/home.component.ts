@@ -4,13 +4,14 @@ import {Router, RouterLink} from "@angular/router";
 import {ProductService} from "../../../Services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Product} from "../../../Interfaces/product.interface";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     NgOptimizedImage,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   products!: Product[];
 
-  constructor(private router: Router, private productService: ProductService) {
+  constructor(private router: Router, private productService: ProductService, private toastr: ToastrService) {
   }
 
   //Iegūst 4 jaunākos produktus, kurus izvadīt lietotājam
@@ -44,6 +45,10 @@ export class HomeComponent implements OnInit {
 
   //Pievieno konkrēto produktu grozam
   addToCart(id: number): void {
+    if(!localStorage.getItem("token")){
+      this.toastr.error('Vispirms nepieciešams autentificēties!');
+      return
+    }
     this.productService.addToCart(id)
   }
 }

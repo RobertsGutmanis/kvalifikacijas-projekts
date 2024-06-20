@@ -20,6 +20,11 @@ export class WishlistService {
 
   //Pievieno produktu vēlmju sarakstam un saglabā localStorage
   addToWishlist(id: number): any {
+    if(!localStorage.getItem("token")){
+      this.toastr.error('Vispirms nepieciešams autentificēties!');
+      return
+    }
+
     if(localStorage.getItem("wishlist_items_id")){
       this.wishlistItemArr = JSON.parse(localStorage.getItem("wishlist_items_id") ?? "")
     }else{
@@ -60,9 +65,5 @@ export class WishlistService {
         Authorization: `Bearer ${localStorage.getItem("token") ?? ""}`
       }),
     })
-  }
-
-  getWishlistItemsFromUser(): any{
-
   }
 }

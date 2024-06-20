@@ -1,30 +1,63 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductService} from "../../../Services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Product} from "../../../Interfaces/product.interface";
-import {FormsModule} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {AuthService} from "../../../Services/auth.service";
+import {ToastrService} from "ngx-toastr";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-cart',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgOptimizedImage
   ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
   countArray: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   cartItems: Product[] = [];
   totalPrice: number = 0;
+  views: string = "cart";
+  formGroup!: FormGroup;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private authService: AuthService, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
     if (localStorage.getItem("cart_items_id")) {
       this.getCartItems()
     }
+
+    this.formGroup = new FormGroup({
+      "name": new FormControl(""),
+      "middle_name": new FormControl(""),
+      "last_name": new FormControl(""),
+      "phone_num": new FormControl(""),
+      "country": new FormControl(""),
+      "city": new FormControl(""),
+      "address": new FormControl(""),
+      "zip": new FormControl("")
+    });
+
+    this.authService.getUser().subscribe({
+      next: (response: any): void => {
+        this.formGroup = new FormGroup({
+          "name": new FormControl(response.data.name, Validators.required),
+          "middle_name": new FormControl(response.data.middle_name),
+          "last_name": new FormControl(response.data.last_name, Validators.required),
+          "phone_num": new FormControl(response.data.phone_num),
+          "country": new FormControl(response.data.country),
+          "city": new FormControl(response.data.city),
+          "address": new FormControl(response.data.address),
+          "zip": new FormControl(response.data.zip)
+        });
+      },
+    })
   }
 
   //Iegūst visas groza preces, saglabā tās maibīgajā un aprēķina groza kopējo summu
@@ -91,5 +124,34 @@ export class CartComponent implements OnInit {
       }
       this.totalPrice = this.totalPrice + (item.totalPrice ?? 0);
     })
+  }
+
+  changeView(): void{
+    if(!localStorage.getItem("token")){
+      this.toastr.error('Vispirms nepieciešams autentificēties!');
+      return
+    }
+    if(!localStorage.getItem("cart_items_id") || JSON.parse(localStorage.getItem("cart_items_id") ?? "").length === 0){
+      this.toastr.error('Grozs ir tukšs!');
+      return
+    }
+    if(this.views==="cart") this.views = "address"
+    else if(this.views==="address") this.views = "checkout"
+  }
+
+  onSubmitAddress(): void{
+    this.authService.updateUser(this.formGroup.value).subscribe({
+      next: (response: any): void =>{
+
+      },
+      error: (error: HttpErrorResponse): void=>{
+
+      }
+    })
+  }
+
+  ngOnDestroy() : void{
+    this.views = "cart";
+    this.getCartItems()
   }
 }

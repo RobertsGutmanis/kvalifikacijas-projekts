@@ -6,11 +6,12 @@ import {Product} from "../../../Interfaces/product.interface";
 import {Specifications} from "../../../Interfaces/specifications.interface";
 import {WishlistService} from "../../../Services/wishlist.service";
 import {ToastrService} from "ngx-toastr";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
@@ -51,11 +52,6 @@ export class ProductComponent implements OnInit {
 
   //Pievieno produktu vēlmju sarakstam
   onAddToWishlist(id: number): void {
-
-    if(!localStorage.getItem("token")){
-      this.toastr.error('Vispirms nepieciešams autentificēties!');
-      return
-    }
     this.wishlistService.addToWishlist(id).subscribe({
       next: (response: any): void => {
       },

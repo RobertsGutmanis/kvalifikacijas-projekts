@@ -4,13 +4,16 @@ import {ProductService} from "../../../Services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Product} from "../../../Interfaces/product.interface";
 import {TitlePipe} from "../../../Pipes/title.pipe";
+import {ToastrService} from "ngx-toastr";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-search',
   standalone: true,
   imports: [
     RouterLink,
-    TitlePipe
+    TitlePipe,
+    NgOptimizedImage
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
@@ -24,7 +27,7 @@ export class SearchComponent implements OnInit {
   currentPriceRange: number = 1;
 
   //Iegūst meklējamo vērtību no URL
-  constructor(private activeRoute: ActivatedRoute, private productService: ProductService, private router: Router) {
+  constructor(private activeRoute: ActivatedRoute, private productService: ProductService, private router: Router, private toastr: ToastrService) {
     this.searchParam = this.activeRoute.snapshot.params['value']
     console.log(this.searchParam)
   }
