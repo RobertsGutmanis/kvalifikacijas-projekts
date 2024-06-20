@@ -168,7 +168,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.checkoutService.checkout(Math.round(this.totalPrice), this.formGroup.value.delivery_method).subscribe({
       next: (value: any): void=>{
         console.log(value)
-        // window.location = value.url
+        window.location = value.url
       }
     })
   }
