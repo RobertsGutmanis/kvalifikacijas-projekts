@@ -16,4 +16,12 @@ export class CheckoutService {
       }),
     })
   }
+
+  getOrders(): Observable<any>{
+    return this.http.get(`https://api2.rgutmanis.com/api/orders`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${localStorage.getItem("token") ?? ""}`
+      }),
+    })
+  }
 }
