@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgOptimizedImage} from '@angular/common'
 import {Router, RouterLink} from "@angular/router";
 import {ProductService} from "../../../Services/product.service";
-import {HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Product} from "../../../Interfaces/product.interface";
 import {ToastrService} from "ngx-toastr";
 
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   products!: Product[];
 
-  constructor(private router: Router, private productService: ProductService, private toastr: ToastrService) {
+  constructor(private router: Router, private productService: ProductService, private toastr: ToastrService, private http: HttpClient) {
   }
 
   //Iegūst 4 jaunākos produktus, kurus izvadīt lietotājam

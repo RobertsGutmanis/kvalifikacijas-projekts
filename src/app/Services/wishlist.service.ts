@@ -26,7 +26,7 @@ export class WishlistService {
     }
 
     if(localStorage.getItem("wishlist_items_id")){
-      this.wishlistItemArr = JSON.parse(localStorage.getItem("wishlist_items_id") ?? "")
+      this.wishlistItemArr = JSON.parse(localStorage.getItem("wishlist_items_id") ?? JSON.stringify([]))
     }else{
       this.wishlistItemArr = []
     }

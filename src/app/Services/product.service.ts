@@ -15,7 +15,7 @@ export class ProductService {
   //Uz projekta sākumu pārbauda, vai localStorage eksistē "wishlist_items_id" un "cart_items_id", un ja eksistē, tad to vērtības ieliek mainīgajos
   constructor(private http: HttpClient, private toastr: ToastrService) {
     if (localStorage.getItem("cart_item_id")) {
-      this.cartItemArr = JSON.parse(localStorage.getItem("cart_items_id") ?? "");
+      this.cartItemArr = JSON.parse(localStorage.getItem("cart_items_id") ?? JSON.stringify([]));
     }
   }
 
@@ -47,9 +47,9 @@ export class ProductService {
 
   //Iegūst produktu daudzumu grozā
   getCartItemCount(): Map<number, number> {
-    let uniqueArray: any[] = [...new Set(JSON.parse(localStorage.getItem("cart_items_id") ?? ""))];
+    let uniqueArray: any[] = [...new Set(JSON.parse(localStorage.getItem("cart_items_id") ?? JSON.stringify([])))];
     uniqueArray.forEach((el: number): void => {
-      this.cartItemCount.set(el, JSON.parse(localStorage.getItem("cart_items_id") ?? "").filter((x: number): boolean => x === el).length)
+      this.cartItemCount.set(el, JSON.parse(localStorage.getItem("cart_items_id") ?? JSON.stringify([])).filter((x: number): boolean => x === el).length)
     })
 
     return this.cartItemCount
@@ -57,7 +57,7 @@ export class ProductService {
 
   //Izņem produktu no groza
   removeFromCart(id: number): void {
-    let cartItems = JSON.parse(localStorage.getItem("cart_items_id") ?? "")
+    let cartItems = JSON.parse(localStorage.getItem("cart_items_id") ?? JSON.stringify([]))
     let filteredArray = cartItems.filter((e: number): boolean => e !== id)
     localStorage.setItem("cart_items_id", JSON.stringify(filteredArray))
     this.toastr.error("Produkts izņemts no groza!")

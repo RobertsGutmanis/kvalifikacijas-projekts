@@ -6,6 +6,8 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {AuthService} from "../../../Services/auth.service";
 import {ToastrService} from "ngx-toastr";
 import {NgOptimizedImage} from "@angular/common";
+import {CheckoutService} from "../../../Services/checkout.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cart',
@@ -24,8 +26,12 @@ export class CartComponent implements OnInit, OnDestroy {
   totalPrice: number = 0;
   views: string = "cart";
   formGroup!: FormGroup;
+  errorMessage: string = "none";
 
-  constructor(private productService: ProductService, private authService: AuthService, private toastr: ToastrService) {
+  constructor(private productService: ProductService,
+              private authService: AuthService,
+              private toastr: ToastrService,
+              private checkoutService: CheckoutService) {
   }
 
   ngOnInit(): void {
@@ -37,27 +43,13 @@ export class CartComponent implements OnInit, OnDestroy {
       "name": new FormControl(""),
       "middle_name": new FormControl(""),
       "last_name": new FormControl(""),
-      "phone_num": new FormControl(""),
-      "country": new FormControl(""),
-      "city": new FormControl(""),
-      "address": new FormControl(""),
-      "zip": new FormControl("")
+      "phone_num": new FormControl("", Validators.required),
+      "country": new FormControl("", Validators.required),
+      "city": new FormControl("", Validators.required),
+      "address": new FormControl("", Validators.required),
+      "zip": new FormControl("", Validators.required),
+      "delivery_method": new FormControl("", Validators.required)
     });
-
-    this.authService.getUser().subscribe({
-      next: (response: any): void => {
-        this.formGroup = new FormGroup({
-          "name": new FormControl(response.data.name, Validators.required),
-          "middle_name": new FormControl(response.data.middle_name),
-          "last_name": new FormControl(response.data.last_name, Validators.required),
-          "phone_num": new FormControl(response.data.phone_num),
-          "country": new FormControl(response.data.country),
-          "city": new FormControl(response.data.city),
-          "address": new FormControl(response.data.address),
-          "zip": new FormControl(response.data.zip)
-        });
-      },
-    })
   }
 
   //Iegūst visas groza preces, saglabā tās maibīgajā un aprēķina groza kopējo summu
@@ -95,7 +87,7 @@ export class CartComponent implements OnInit, OnDestroy {
   //Nosaka vai lietotājs mainījis preces daudzumu grozā uz lielāku vai mazāku un saglabā to
   onChangeCount(count: string, id: number): void {
     this.totalPrice = 0;
-    const idsArr: number[] = JSON.parse(localStorage.getItem("cart_items_id") ?? "")
+    const idsArr: number[] = JSON.parse(localStorage.getItem("cart_items_id") ?? JSON.stringify([]))
     const idCount: number = idsArr.filter((id_num: number): boolean => id_num === id).length
 
     if (idCount < +count) {
@@ -116,7 +108,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   //Kalkulē produktu cenas un groza kopējo cenu
   changePrices(id: number): void {
-    const idsArr: number[] = JSON.parse(localStorage.getItem("cart_items_id") ?? "")
+    const idsArr: number[] = JSON.parse(localStorage.getItem("cart_items_id") ?? JSON.stringify([]))
     this.cartItems.forEach((item: Product): void => {
       if (item.id === id) {
         item.count = idsArr.filter((id_num: number): boolean => id_num === id).length
@@ -127,25 +119,56 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   changeView(): void{
-    if(!localStorage.getItem("token")){
-      this.toastr.error('Vispirms nepieciešams autentificēties!');
-      return
-    }
-    if(!localStorage.getItem("cart_items_id") || JSON.parse(localStorage.getItem("cart_items_id") ?? "").length === 0){
-      this.toastr.error('Grozs ir tukšs!');
-      return
-    }
-    if(this.views==="cart") this.views = "address"
-    else if(this.views==="address") this.views = "checkout"
+      if(!localStorage.getItem("token")){
+        this.toastr.error('Vispirms nepieciešams autentificēties!');
+        return
+      }
+      if(!localStorage.getItem("cart_items_id") || JSON.parse(localStorage.getItem("cart_items_id") ?? JSON.stringify([])).length === 0){
+        this.toastr.error('Grozs ir tukšs!');
+        return
+      }
+      if(this.views==="cart") this.views = "address"
+      else if(this.views==="address") this.views = "checkout"
+
+    this.authService.getUser().subscribe({
+      next: (response: any): void => {
+        this.formGroup = new FormGroup({
+          "name": new FormControl(response.data.name, Validators.required),
+          "middle_name": new FormControl(response.data.middle_name),
+          "last_name": new FormControl(response.data.last_name, Validators.required),
+          "phone_num": new FormControl(response.data.phone_num),
+          "country": new FormControl(response.data.country),
+          "city": new FormControl(response.data.city),
+          "address": new FormControl(response.data.address),
+          "zip": new FormControl(response.data.zip),
+          "delivery_method": new FormControl('', Validators.required)
+        });
+      },
+    })
   }
 
   onSubmitAddress(): void{
+    console.log(this.formGroup)
+    if(this.formGroup.status === "INVALID"){
+      this.errorMessage = "Lūdzu ievadiet pilno adresi, tālr. nr., un izvēlaties piegādes veidu"
+      return
+    }
     this.authService.updateUser(this.formGroup.value).subscribe({
       next: (response: any): void =>{
-
+        this.onCheckout()
       },
       error: (error: HttpErrorResponse): void=>{
+        this.errorMessage = "Nepareizi aizpildīti kontaktinformācijas ievadlauki!"
+        return
+      }
+    })
+  }
 
+  onCheckout(): void{
+    this.checkoutService.checkout(Math.round(this.totalPrice), this.formGroup.value.delivery_method).subscribe({
+      next: (value: any): void=>{
+        console.log(value)
+        // window.location = value.url
       }
     })
   }

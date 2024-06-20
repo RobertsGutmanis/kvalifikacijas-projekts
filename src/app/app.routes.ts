@@ -15,6 +15,10 @@ import {DealsComponent} from "./Components/Views/deals/deals.component";
 import {AboutComponent} from "./Components/Views/about/about.component";
 import {PrivacyComponent} from "./Components/Views/privacy/privacy.component";
 import {TosComponent} from "./Components/Views/tos/tos.component";
+import {NotFoundComponent} from "./Components/Views/not-found/not-found.component";
+import {comment} from "postcss";
+import {CheckoutSuccessComponent} from "./Components/Views/checkout-success/checkout-success.component";
+import {OrdersComponent} from "./Components/Views/orders/orders.component";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -33,4 +37,7 @@ export const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'privacy-policy', component: PrivacyComponent},
   {path: 'rules', component: TosComponent},
+  {path: 'checkout-success', component: CheckoutSuccessComponent},
+  {path: 'orders', component: OrdersComponent},
+  {path: "**", component: NotFoundComponent}
 ];
