@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgClass} from "@angular/common";
+import {EmailService} from "../../../Services/email.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-contact',
@@ -20,6 +22,9 @@ export class ContactComponent implements OnInit {
   topicError: boolean = false;
   messageError: boolean = false;
 
+  constructor(private emailService: EmailService, private toastr: ToastrService) {
+  }
+
   //Izveido formas grupu apstrādei
   ngOnInit(): void {
     this.formGroup = new FormGroup({
@@ -33,7 +38,7 @@ export class ContactComponent implements OnInit {
   //Pārbauda vai formā ir kļūdas un tās datus nosūta tālāk
   onSubmit(): void {
     if (this.formGroup.status === "INVALID") {
-      this.errorMessage = "Incorrect fields!";
+      this.errorMessage = "Nav aizpildīti visi lauki!";
 
       this.formGroup.controls["email"].errors ? this.emailError = true : this.emailError = false;
       this.formGroup.controls["name"].errors ? this.nameError = true : this.nameError = false
@@ -46,7 +51,16 @@ export class ContactComponent implements OnInit {
       this.topicError = false;
       this.messageError = false
       this.errorMessage = "none";
-      console.log(this.formGroup.value)
+
+      const subject: string = `E-pasts no ${this.formGroup.value.email} - ${this.formGroup.value.name}`
+      const text: string = `Topic - ${this.formGroup.value.topic}, Message - ${this.formGroup.value.message}`
+
+      this.emailService.sendEmail({subject: subject, text: text}).subscribe({
+        next: (): void=>{
+          this.toastr.success("Jūsu ziņa tika nosūtīta!")
+          this.formGroup.reset()
+        }
+      })
     }
   }
 }
