@@ -33,7 +33,7 @@ export class WishlistService {
     if (!this.wishlistItemArr.includes(id)) {
       this.wishlistItemArr.push(id)
       localStorage.setItem("wishlist_items_id", JSON.stringify(this.wishlistItemArr));
-      this.toastr.info("Product added to wishlist!")
+      this.toastr.info("Produkts pievienots vēlmju sarakstam!")
       return this.http.post(`${this.url}/wishlist`, {"product_id": id}, {
         headers: new HttpHeaders({
           Authorization: `Bearer ${localStorage.getItem("token") ?? ""}`
